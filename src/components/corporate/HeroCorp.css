@@ -236,8 +236,7 @@
     height: 240px !important;
   }
   .badge-top-left {
-    top: 12px !important;
-    left: 12px !important;
+    display: none !important; /* Hide top-left badge on mobile so it never covers the guard's face */
   }
   .badge-bottom-right {
     bottom: 12px !important;

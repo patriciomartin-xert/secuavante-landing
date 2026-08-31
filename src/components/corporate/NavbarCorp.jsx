@@ -34,11 +34,6 @@ export default function NavbarCorp({ onOpenQuote, onSwitchVersion }) {
           <button className="btn-primary-corp" onClick={onOpenQuote}>
             <span>Cotizar Servicio</span>
           </button>
-          
-          {/* Quick Switch Version */}
-          <button className="version-toggle-btn" onClick={onSwitchVersion} title="Cambiar a versión Ciberseguridad">
-            <span>Ver Modo Ciber 🚀</span>
-          </button>
         </div>
       </div>
     </header>

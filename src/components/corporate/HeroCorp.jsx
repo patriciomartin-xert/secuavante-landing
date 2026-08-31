@@ -45,6 +45,14 @@ export default function HeroCorp({ onOpenQuote }) {
 
         {/* Right: Modern, Clean Metrics Panel (No sci-fi, human trust elements) */}
         <div className="hero-corp-panel">
+          <div className="hero-corp-image-container">
+            <img src="/friendly_security.png" alt="Personal de Seguridad Certificado" className="friendly-guard-img" />
+            <div className="guard-overlay-badge">
+              <Users size={14} className="text-red-corp" />
+              <span>Personal Certificado y Confiable</span>
+            </div>
+          </div>
+
           <div className="trust-main-card">
             <div className="shield-glow-box-corp">
               <Shield size={36} className="text-red-corp" />

@@ -316,3 +316,70 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.85rem;
   }
 }
+
+/* Floating Version Switcher Pill */
+.version-switcher-pill {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100000;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(230, 57, 70, 0.3);
+  padding: 8px 12px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.775rem;
+  font-weight: 700;
+  color: #94A3B8;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(230, 57, 70, 0.15);
+  backdrop-filter: blur(12px);
+}
+
+.switcher-btn {
+  background: transparent;
+  border: none;
+  color: #64748B;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.switcher-btn:hover {
+  color: #FFFFFF;
+}
+
+.switcher-btn.active {
+  background: #E63946;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(230, 57, 70, 0.35);
+}
+
+/* Corporate Global Reset Rules */
+.theme-corporate {
+  background: #F8FAFC !important;
+  color: #0F172A !important;
+}
+
+.theme-corporate body {
+  background: #F8FAFC !important;
+  color: #0F172A !important;
+  background-image: none !important;
+}
+
+.theme-corporate ::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+.theme-corporate ::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border: 2px solid #F1F5F9;
+}
+
+.theme-corporate ::-webkit-scrollbar-thumb:hover {
+  background: #E63946;
+}

@@ -11,7 +11,18 @@ import ContactFooter from './components/ContactFooter';
 import CyberExplosionOverlay from './components/CyberExplosionOverlay';
 import QuoteModal from './components/QuoteModal';
 
+// Corporate Human-Centric Version Components
+import NavbarCorp from './components/corporate/NavbarCorp';
+import HeroCorp from './components/corporate/HeroCorp';
+import ServicesCorp from './components/corporate/ServicesCorp';
+import SelectionCorp from './components/corporate/SelectionCorp';
+import TrustCorp from './components/corporate/TrustCorp';
+import ContactCorp from './components/corporate/ContactCorp';
+
+import { Sparkles, Users } from 'lucide-react';
+
 export default function App() {
+  const [landingVersion, setLandingVersion] = useState('corporate'); // 'corporate' | 'cyber'
   const [showIntro, setShowIntro] = useState(true);
   const [isExploding, setIsExploding] = useState(false);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
@@ -31,11 +42,16 @@ export default function App() {
   };
 
   return (
-    <div className="app-root">
-      {/* Interactive Encrypted Cyber Stream Background */}
-      <CyberBackground />
+    <div className={`app-root theme-${landingVersion}`}>
+      {/* 1. Cyber-Only Elements */}
+      {landingVersion === 'cyber' && (
+        <>
+          <CyberBackground />
+          {showIntro && <LockIntro onComplete={() => setShowIntro(false)} />}
+        </>
+      )}
 
-      {/* Cyber Code Glitch & Matrix Explosion Overlay */}
+      {/* Cyber Code Glitch & Matrix Explosion Overlay (Active in both to preserve awesome experience!) */}
       <CyberExplosionOverlay 
         isActive={isExploding} 
         onComplete={handleExplosionComplete} 
@@ -48,24 +64,54 @@ export default function App() {
         selectedService={selectedServiceForQuote}
       />
 
-      {/* Intro Cyber Lock Animation */}
-      {showIntro && (
-        <LockIntro onComplete={() => setShowIntro(false)} />
-      )}
+      {/* 2. Toggle Version Floating Switcher (Fixed Bottom-Left) */}
+      <div className="version-switcher-pill">
+        <span>Versión Activa:</span>
+        <button 
+          className={`switcher-btn ${landingVersion === 'corporate' ? 'active' : ''}`}
+          onClick={() => setLandingVersion('corporate')}
+        >
+          👔 Corporativa
+        </button>
+        <button 
+          className={`switcher-btn ${landingVersion === 'cyber' ? 'active' : ''}`}
+          onClick={() => setLandingVersion('cyber')}
+        >
+          🚀 Ciber
+        </button>
+      </div>
 
-      {/* Main Landing App */}
-      <Navbar onOpenQuote={() => handleTriggerQuote()} />
-      <main>
-        <Hero onOpenQuote={() => handleTriggerQuote()} />
-        <Services onSelectService={(service) => handleTriggerQuote(service)} />
-        <SelectionProcess />
-        <TrustBadges />
-        <QuoteCalculator 
-          preselectedService={selectedServiceForQuote} 
-          onOpenQuote={() => handleTriggerQuote()}
-        />
-      </main>
-      <ContactFooter onOpenQuote={() => handleTriggerQuote()} />
+      {/* 3. Conditionally render the selected Landing Version */}
+      {landingVersion === 'cyber' ? (
+        <>
+          <Navbar onOpenQuote={() => handleTriggerQuote()} />
+          <main>
+            <Hero onOpenQuote={() => handleTriggerQuote()} />
+            <Services onSelectService={(service) => handleTriggerQuote(service)} />
+            <SelectionProcess />
+            <TrustBadges />
+            <QuoteCalculator 
+              preselectedService={selectedServiceForQuote} 
+              onOpenQuote={() => handleTriggerQuote()}
+            />
+          </main>
+          <ContactFooter onOpenQuote={() => handleTriggerQuote()} />
+        </>
+      ) : (
+        <>
+          <NavbarCorp 
+            onOpenQuote={() => handleTriggerQuote()} 
+            onSwitchVersion={() => setLandingVersion('cyber')}
+          />
+          <main className="corp-main-wrapper">
+            <HeroCorp onOpenQuote={() => handleTriggerQuote()} />
+            <ServicesCorp onSelectService={(service) => handleTriggerQuote(service)} />
+            <SelectionCorp />
+            <TrustCorp />
+          </main>
+          <ContactCorp />
+        </>
+      )}
     </div>
   );
 }

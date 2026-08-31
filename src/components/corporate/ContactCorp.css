@@ -1,0 +1,186 @@
+/* Corporate Contact Footer CSS */
+.contact-corp-section {
+  background: #0F172A; /* Elegant solid slate background for professional closure */
+  color: #F8FAFC;
+  padding: 80px 0 40px 0;
+}
+
+.contact-corp-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+  margin-bottom: 56px;
+}
+
+.brand-logo-corp-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.brand-corp-text h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.brand-corp-text p {
+  font-size: 0.725rem;
+  font-weight: 600;
+  color: #94A3B8;
+  text-transform: uppercase;
+}
+
+.brand-corp-summary {
+  font-size: 0.925rem;
+  color: #94A3B8;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.contact-corp-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-corp-link-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.contact-corp-link-item strong {
+  display: block;
+  font-size: 0.825rem;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.contact-corp-link-item span,
+.contact-corp-link-item a {
+  font-size: 0.875rem;
+  color: #CBD5E1;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+.contact-corp-link-item a:hover {
+  color: #E63946;
+}
+
+.corp-phones-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Corporate Form Card */
+.contact-corp-form-column {
+  background: #1E293B;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  padding: 36px;
+  border-radius: var(--radius-md);
+}
+
+.corp-contact-form h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+}
+
+.corp-contact-form p {
+  font-size: 0.85rem;
+  color: #94A3B8;
+  margin-bottom: 24px;
+}
+
+.form-group-corp {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.form-group-corp label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #CBD5E1;
+  text-transform: uppercase;
+}
+
+.form-group-corp input,
+.form-group-corp select,
+.form-group-corp textarea {
+  width: 100%;
+  padding: 10px 14px;
+  background: #0F172A;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: var(--radius-sm);
+  color: #FFFFFF;
+  font-size: 0.875rem;
+}
+
+.form-group-corp input:focus,
+.form-group-corp select:focus,
+.form-group-corp textarea:focus {
+  border-color: #E63946;
+  outline: none;
+}
+
+.form-row-2-corp {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.submit-corp-btn-block {
+  width: 100%;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Success */
+.corp-sent-success {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.corp-sent-success h3 {
+  font-size: 1.35rem;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.corp-sent-success p {
+  font-size: 0.9rem;
+  color: #94A3B8;
+  margin-bottom: 24px;
+}
+
+/* Legal Footer */
+.footer-legal-corp {
+  text-align: center;
+  padding-top: 40px;
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+  font-size: 0.725rem;
+  color: #64748B;
+}
+
+.footer-legal-corp p {
+  margin-top: 8px;
+}
+
+@media (max-width: 1024px) {
+  .contact-corp-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

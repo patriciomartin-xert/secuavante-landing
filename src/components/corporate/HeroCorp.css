@@ -131,40 +131,21 @@
   max-width: 520px; /* Made the person larger as requested */
   border-radius: var(--radius-lg);
   overflow: visible; /* Allow floating badges to slightly overflow beautifully */
-}
-
-/* Stacking wrapper that handles rounding & image cross-fading and holds size */
-.hero-corp-image-slides-wrap {
-  position: relative;
-  width: 100%;
-  height: 480px; /* Established height for absolute children */
-  overflow: hidden;
-  border-radius: var(--radius-lg);
   box-shadow: 0 25px 60px rgba(15, 23, 42, 0.1);
   border: 1px solid rgba(148, 163, 184, 0.15);
   background: #FFFFFF;
 }
 
 .friendly-guard-img {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
+  height: 480px; /* Made much larger to fit the entire height of the fold */
   object-fit: cover;
   display: block;
   border-radius: var(--radius-lg);
-  transition: opacity 0.8s ease-in-out, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  opacity: 0;
-  pointer-events: none;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.friendly-guard-img.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.hero-corp-image-slides-wrap:hover .friendly-guard-img.active {
+.hero-corp-image-container:hover .friendly-guard-img {
   transform: scale(1.02);
 }
 
@@ -271,11 +252,8 @@
     font-size: 0.9rem;
     text-align: center;
   }
-  .hero-corp-image-slides-wrap {
-    height: 220px !important;
-  }
   .friendly-guard-img {
-    height: 100% !important; /* Uses the wrapper height */
+    height: 220px !important;
     object-position: top center; /* Slide crop window up to show face/hair fully on mobile! */
   }
   .badge-top-left {

@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secuavante - Seguridad Privada de Alta Gama</title>
+  <meta name="description" content="Soluciones integrales de seguridad privada, intramuros, monitoreo GPS y protección ejecutiva con sentido humano.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --red-primary: #E63946;
+      --red-hover: #D91E2A;
+      --slate-900: #0F172A;
+      --slate-800: #1E293B;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748B;
+      --slate-100: #F1F5F9;
+      --slate-50: #F8FAFC;
+      --emerald: #10B981;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --font-sans: 'Inter', sans-serif;
+      --font-display: 'Outfit', sans-serif;
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: #FFFFFF;
+      color: var(--slate-900);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 76px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      transition: var(--transition-smooth);
+    }
+
+    .navbar-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 42px;
+      width: auto;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      letter-spacing: -0.5px;
+    }
+
+    .brand-tagline {
+      font-size: 0.625rem;
+      font-weight: 700;
+      color: var(--slate-500);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-nav-quote {
+      background: var(--red-primary);
+      color: #FFFFFF;
+      border: none;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.825rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      text-decoration: none;
+    }
+
+    .btn-nav-quote:hover {
+      background: var(--red-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.2);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 140px 0 80px 0;
+      background: radial-gradient(circle at 90% 10%, rgba(230, 57, 70, 0.03) 0%, transparent 40%);
+    }
+
+    .hero-container {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(230, 57, 70, 0.06);
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--red-primary);
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    .text-red {
+      color: var(--red-primary);
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--slate-600);
+      line-height: 1.6;
+      margin-bottom: 32px;
+      max-width: 580px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .btn-primary-large {
+      padding: 14px 28px;
+      background: var(--red-primary);
+      border: none;
+      border-radius: var(--radius-sm);
+      color: #FFFFFF;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-primary-large:hover {
+      background: var(--red-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(230, 57, 70, 0.25);
+    }
+
+    .btn-secondary-large {
+      padding: 14px 28px;
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: var(--radius-sm);
+      color: var(--slate-900);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-secondary-large:hover {
+      background: var(--slate-50);
+      border-color: #94A3B8;
+    }
+
+    .hero-trust-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .bullet {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--slate-700);
+    }
+
+    .bullet i {
+      color: var(--red-primary);
+      flex-shrink: 0;
+    }
+
+    .hero-panel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-image-container {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      border-radius: var(--radius-lg);
+      overflow: visible;
+      box-shadow: 0 25px 60px rgba(15, 23, 42, 0.1);
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      background: #FFFFFF;
+    }
+
+    .friendly-guard-img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+      border-radius: var(--radius-lg);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-image-container:hover .friendly-guard-img {
+      transform: scale(1.02);
+    }
+
+    .guard-overlay-badge {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      padding: 10px 18px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+      z-index: 10;
+      transition: transform 0.3s ease;
+    }
+
+    .guard-overlay-badge:hover {
+      transform: translateY(-2px);
+    }
+
+    .badge-top-left {
+      top: 24px;
+      left: -28px;
+    }
+
+    .badge-bottom-right {
+      bottom: 24px;
+      right: -28px;
+    }
+
+    .badge-text-stack {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .badge-title {
+      font-size: 0.775rem;
+      font-weight: 700;
+      color: var(--slate-900);
+    }
+
+    .badge-sub {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--slate-500);
+    }
+
+    /* Services Section */
+    .services-section {
+      padding: 100px 0;
+      background: #FFFFFF;
+      border-top: 1px solid var(--slate-100);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 56px auto;
+    }
+
+    .section-subtitle {
+      font-size: 0.775rem;
+      font-weight: 700;
+      color: var(--red-primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin-top: 8px;
+      margin-bottom: 12px;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--slate-500);
+      line-height: 1.5;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--slate-50);
+      border: 1px solid #E2E8F0;
+      border-radius: var(--radius-md);
+      padding: 0;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      background: #FFFFFF;
+      border-color: var(--red-primary);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    .service-cover {
+      position: relative;
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    }
+
+    .service-cover-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .service-card:hover .service-cover-img {
+      transform: scale(1.05);
+    }
+
+    .service-icon-badge {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.98);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      z-index: 5;
+      color: var(--red-primary);
+    }
+
+    .service-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 0.875rem;
+      color: var(--slate-600);
+      line-height: 1.5;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .bullets-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .bullets-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--slate-700);
+    }
+
+    .bullets-list li i {
+      color: var(--emerald);
+      flex-shrink: 0;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px solid #E2E8F0;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--red-primary);
+      margin-top: auto;
+    }
+
+    /* Selection Section */
+    .selection-section {
+      padding: 100px 0;
+      background: var(--slate-50);
+    }
+
+    .selection-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .badge-light {
+      background: rgba(148, 163, 184, 0.1);
+      color: var(--slate-600);
+    }
+
+    .reasons-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .reason-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      gap: 20px;
+      transition: var(--transition-smooth);
+    }
+
+    .reason-card:hover {
+      border-color: rgba(230, 57, 70, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.03);
+    }
+
+    .reason-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(230, 57, 70, 0.05);
+      color: var(--red-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .reason-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin-bottom: 6px;
+    }
+
+    .reason-desc {
+      font-size: 0.85rem;
+      color: var(--slate-600);
+      line-height: 1.5;
+    }
+
+    /* Trust Section */
+    .trust-section {
+      padding: 100px 0;
+      background: #FFFFFF;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .policy-box {
+      background: var(--slate-50);
+      border: 1px solid #E2E8F0;
+      border-radius: var(--radius-md);
+      padding: 32px;
+    }
+
+    .policy-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .policy-icon {
+      color: var(--red-primary);
+    }
+
+    .policy-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--slate-900);
+    }
+
+    .policy-desc {
+      font-size: 0.9rem;
+      color: var(--slate-600);
+      line-height: 1.6;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .stat-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-align: center;
+      transition: var(--transition-smooth);
+    }
+
+    .stat-card:hover {
+      border-color: var(--red-primary);
+      box-shadow: 0 10px 25px rgba(230, 57, 70, 0.04);
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.75rem;
+      font-weight: 800;
+      color: var(--red-primary);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.825rem;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 4px;
+    }
+
+    .stat-sub {
+      font-size: 0.7rem;
+      color: var(--slate-500);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 100px 0;
+      background: var(--slate-50);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 56px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contact-title {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin-bottom: 16px;
+    }
+
+    .contact-desc {
+      font-size: 1rem;
+      color: var(--slate-600);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .method-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(230, 57, 70, 0.05);
+      color: var(--red-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .method-title {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--slate-900);
+    }
+
+    .method-value {
+      font-size: 0.85rem;
+      color: var(--slate-600);
+    }
+
+    .contact-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: 0 15px 40px rgba(15, 23, 42, 0.05);
+    }
+
+    .form-group-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.775rem;
+      font-weight: 700;
+      color: var(--slate-700);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--slate-50);
+      border: 1px solid #E2E8F0;
+      border-radius: var(--radius-sm);
+      color: var(--slate-900);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      transition: var(--transition-smooth);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--red-primary);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--red-primary);
+      color: #FFFFFF;
+      border: none;
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-submit:hover {
+      background: var(--red-hover);
+      box-shadow: 0 8px 24px rgba(230, 57, 70, 0.2);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--slate-900);
+      color: #FFFFFF;
+      padding: 64px 0 32px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1.5fr;
+      gap: 56px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-brand .brand-name {
+      color: #FFFFFF;
+    }
+
+    .footer-brand .brand-tagline {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-desc {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    .footer-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    .footer-links a:hover {
+      color: #FFFFFF;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    .social-btn:hover {
+      background: var(--red-primary);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+      font-size: 0.775rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* Modal Styling */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      position: relative;
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      max-width: 500px;
+      width: 100%;
+      padding: 0;
+      box-shadow: 0 25px 60px rgba(15, 23, 42, 0.2);
+      overflow: hidden;
+      transform: scale(0.95);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-image-wrap {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    }
+
+    .modal-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-body-padding {
+      padding: 28px 32px 32px 32px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(4px);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--slate-900);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 10;
+      transition: var(--transition-smooth);
+    }
+
+    .modal-close:hover {
+      background: var(--red-primary);
+      color: #FFFFFF;
+    }
+
+    .modal-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin-bottom: 12px;
+    }
+
+    .modal-desc {
+      font-size: 0.95rem;
+      color: var(--slate-600);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .modal-subtitle {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--slate-500);
+      margin-bottom: 8px;
+    }
+
+    .modal-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .modal-features li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--slate-800);
+    }
+
+    .modal-features li i {
+      color: var(--red-primary);
+      flex-shrink: 0;
+    }
+
+    .modal-btn-action {
+      width: 100%;
+      background: var(--red-primary);
+      color: #FFFFFF;
+      border: none;
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      margin-top: 24px;
+      transition: var(--transition-smooth);
+    }
+
+    .modal-btn-action:hover {
+      background: var(--red-hover);
+    }
+
+    /* Scroll Reveal Animation Styles */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+    .delay-400 { transition-delay: 400ms; }
+
+    /* Responsiveness */
+    @media (max-width: 1024px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+      }
+      .hero-content {
+        align-items: center;
+      }
+      .hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+      .selection-grid, .trust-grid, .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .policy-box {
+        order: 1;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+      .footer-brand {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .navbar {
+        height: 70px;
+      }
+      .brand-name {
+        font-size: 1.1rem;
+      }
+      .hero-section {
+        padding-top: 100px;
+        padding-bottom: 24px;
+      }
+      .hero-title {
+        font-size: 2rem;
+        line-height: 1.2;
+      }
+      .hero-desc {
+        display: none;
+      }
+      .btn-secondary-large {
+        display: none;
+      }
+      .btn-primary-large {
+        width: 100%;
+      }
+      .hero-actions {
+        margin-bottom: 16px;
+      }
+      .hero-trust-bullets {
+        display: none;
+      }
+      .friendly-guard-img {
+        height: 220px;
+        object-position: top center;
+      }
+      .badge-top-left, .badge-bottom-right {
+        display: none;
+      }
+      .services-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 16px;
+        padding-bottom: 20px;
+        scrollbar-width: none;
+      }
+      .services-grid::-webkit-scrollbar {
+        display: none;
+      }
+      .service-card {
+        min-width: 280px;
+        max-width: 280px;
+        scroll-snap-align: center;
+        flex-shrink: 0;
+      }
+      .service-cover {
+        height: 140px;
+      }
+      .card-desc {
+        display: none;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-brand {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="#" class="brand">
+        <!-- SVG Shield Logo -->
+        <svg class="logo-img" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" style="height: 38px; width: 38px;">
+          <path d="M21 2L5 7V19C5 30.1 11.8 40.5 21 44C30.2 40.5 37 30.1 37 19V7L21 2Z" fill="#E63946"/>
+          <path d="M21 6.5L9.5 10.4V19C9.5 27.5 14.7 35.4 21 39.5V6.5Z" fill="#D91E2A"/>
+          <path d="M21 12L25 16H22V22H20V16H17L21 12Z" fill="#FFFFFF"/>
+          <path d="M15 26H27V28H15V26Z" fill="#FFFFFF"/>
+        </svg>
+        <div class="brand-text">
+          <span class="brand-name">SECU<span class="text-red">AVANTE</span></span>
+          <span class="brand-tagline">Seguridad Privada</span>
+        </div>
+      </a>
+      <button class="btn-nav-quote" onclick="scrollToContact()">Cotizar Servicio</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-container">
+      <div class="hero-content reveal-on-scroll">
+        <div class="badge-tag">
+          <i data-lucide="heart-handshake" style="width: 14px; height: 14px;"></i>
+          <span>SEGURIDAD CON SENTIDO HUMANO</span>
+        </div>
+        <h1 class="hero-title">Tu tranquilidad en manos de <span class="text-red">Profesionales Certificados</span></h1>
+        <p class="hero-desc">
+          Protegemos tus instalaciones, tu empresa y a tu familia con guardias altamente capacitados, filtros éticos rigurosos y supervisión directa las 24 horas. Operamos bajo regulación oficial y total apego a la ley.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary-large" onclick="scrollToContact()">Solicitar Cotización Inmediata</button>
+          <a href="#servicios" class="btn-secondary-large">Ver Servicios Corporativos</a>
+        </div>
+        <div class="hero-trust-bullets">
+          <div class="bullet">
+            <i data-lucide="check-circle-2" style="width: 16px; height: 16px;"></i>
+            <span>Guardias capacitados ante la STPS y registrados ante la SSC</span>
+          </div>
+          <div class="bullet">
+            <i data-lucide="check-circle-2" style="width: 16px; height: 16px;"></i>
+            <span>Tolerancia cero a sustancias nocivas (Pruebas antidoping de 5 páneles)</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-panel reveal-on-scroll delay-200">
+        <div class="hero-image-container">
+          <img src="friendly_security.png" alt="Oficial de Seguridad Secuavante" class="friendly-guard-img">
+          
+          <div class="guard-overlay-badge badge-top-left">
+            <i data-lucide="clock" class="text-red animate-pulse" style="width: 16px; height: 16px;"></i>
+            <div class="badge-text-stack">
+              <span class="badge-title">Atención Continua</span>
+              <span class="badge-sub">Soporte Operativo 24/7</span>
+            </div>
+          </div>
+
+          <div class="guard-overlay-badge badge-bottom-right">
+            <i data-lucide="shield-check" class="text-emerald" style="width: 16px; height: 16px;"></i>
+            <div class="badge-text-stack">
+              <span class="badge-title">Personal Registrado</span>
+              <span class="badge-sub">Filtros ante la SSC y REPSE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="servicios" class="services-section">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-subtitle">NUESTRAS SOLUCIONES</span>
+        <h2 class="section-title">Servicios Profesionales de <span class="text-red">Seguridad Privada</span></h2>
+        <p class="section-desc">
+          Soluciones robustas pero accesibles, diseñadas para salvaguardar tus bienes más valiosos con un enfoque cercano y eficiente.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Card 1 -->
+        <div class="service-card reveal-on-scroll delay-100" onclick="openServiceModal('intramuros')">
+          <div class="service-cover">
+            <img src="service_intramuros.png" alt="Seguridad Intramuros" class="service-cover-img">
+            <div class="service-icon-badge"><i data-lucide="building-2" style="width: 16px; height: 16px;"></i></div>
+          </div>
+          <div class="service-content">
+            <h3 class="card-title">Seguridad Intramuros de Bienes</h3>
+            <p class="card-desc">Resguardo físico profesional y control de accesos para corporativos, plantas industriales, condominios y centros comerciales.</p>
+            <ul class="bullets-list">
+              <li><i data-lucide="check" style="width: 14px; height: 14px;"></i><span>Guardias Registrados</span></li>
+              <li><i data-lucide="check" style="width: 14px; height: 14px;"></i><span>Control de Accesos Vehiculares</span></li>
+            </ul>
+            <div class="card-footer">
+              <span>Saber más</span>
+              <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="service-card reveal-on-scroll delay-200" onclick="openServiceModal('gps')">
+          <div class="service-cover">
+            <img src="service_gps.png" alt="Vigilancia Satelital" class="service-cover-img">
+            <div class="service-icon-badge"><i data-lucide="navigation" style="width: 16px; height: 16px;"></i></div>
+          </div>
+          <div class="service-content">
+            <h3 class="card-title">Monitoreo Satelital GPS</h3>
+            <p class="card-desc">Localización y apagado remoto en tiempo real de flotillas comerciales, vehículos corporativos y particulares.</p>
+            <ul class="bullets-list">
+              <li><i data-lucide="check" style="width: 14px; height: 14px;"></i><span>Ubicación en Tiempo Real</span></li>
+              <li><i data-lucide="check" style="width: 14px; height: 14px;"></i><span>Paro de Motor Remoto</span></li>
+            </ul>
+            <div class="card-footer">
+              <span>Saber más</span>
+              <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="service-card reveal-on-scroll delay-300" onclick="openServiceModal('eventos')">
+          <div class="service-cover">
+            <img src="service_eventos.png" alt="Seguridad en Eventos" class="service-cover-img">
+            <div class="service-icon-badge"><i data-lucide="shield-check" style="width: 16px; height: 16px;"></i></div>
+          </div>
+          <div class="service-content">
+            <h3 class="card-title">Eventos Sociales y Privados</h3>
+            <p class="card-desc">Coordinación logística de protección, control de aforos y filtrado con arcos y raquetas detectoras de metales.</p>
+            <ul class="bullets-list">
+              <li><i data-lucide="check" style="width: 14px; height: 14px;"></i><span>Detectores Garrett</span></li>
+              <li><i data-lucide="check" style="width: 14px; height: 14px;"></i><span>Logística de Accesos</span></li>
+            </ul>
+            <div class="card-footer">
+              <span>Saber más</span>
+              <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="service-card reveal-on-scroll delay-100" onclick="openServiceModal('traslados')">
+          <div class="service-cover">
+            <img src="service_traslados.png" alt="Custodia VIP" class="service-cover-img">
+            <div class="service-icon-badge"><i data-lucide="car" style="width: 16px; height: 16px;"></i></div>
+          </div>
+          <div class="service-content">
+            <h3 class="card-title">Protección Ejecutiva y Escoltas</h3>
+            <p class="card-desc">Conductores de seguridad altamente calificados y escoltas VIP para directivos y traslados de alta prioridad.</p>
+            <ul class="bullets-list">
+              <li><i data-lucide="check" style="width: 14px; height: 14px;"></i><span>Conductores Certificados</span></li>
+              <li><i data-lucide="check" style="width: 14px; height: 14px;"></i><span>Discreción Absoluta</span></li>
+            </ul>
+            <div class="card-footer">
+              <span>Saber más</span>
+              <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="service-card reveal-on-scroll delay-200" onclick="openServiceModal('monitoreo')">
+          <div class="service-cover">
+            <img src="service_monitoreo.png" alt="Centro de Operaciones" class="service-cover-img">
+            <div class="service-icon-badge"><i data-lucide="monitor" style="width: 16px; height: 16px;"></i></div>
+          </div>
+          <div class="service-content">
+            <h3 class="card-title">Vigilancia CCTV y Alarmas</h3>
+            <p class="card-desc">Enlace directo de cámaras y alarmas habitacionales o comerciales con nuestra central operativa continua.</p>
+            <ul class="bullets-list">
+              <li><i data-lucide="check" style="width: 14px; height: 14px;"></i><span>Monitoreo Activo 24/7</span></li>
+              <li><i data-lucide="check" style="width: 14px; height: 14px;"></i><span>Enlace de Emergencia</span></li>
+            </ul>
+            <div class="card-footer">
+              <span>Saber más</span>
+              <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="service-card reveal-on-scroll delay-300" onclick="openServiceModal('investigacion')">
+          <div class="service-cover">
+            <img src="service_consultoria.png" alt="Análisis Situacional" class="service-cover-img">
+            <div class="service-icon-badge"><i data-lucide="search" style="width: 16px; height: 16px;"></i></div>
+          </div>
+          <div class="service-content">
+            <h3 class="card-title">Consultoría y Análisis de Riesgo</h3>
+            <p class="card-desc">Auditorías de vulnerabilidades, estudios socioeconómicos de candidatos y exámenes toxicológicos.</p>
+            <ul class="bullets-list">
+              <li><i data-lucide="check" style="width: 14px; height: 14px;"></i><span>Estudios Socioeconómicos</span></li>
+              <li><i data-lucide="check" style="width: 14px; height: 14px;"></i><span>Antidoping de 5 Páneles</span></li>
+            </ul>
+            <div class="card-footer">
+              <span>Saber más</span>
+              <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Selection Section -->
+  <section class="selection-section">
+    <div class="container selection-grid">
+      <div class="reveal-on-scroll">
+        <div class="badge-tag badge-light">
+          <i data-lucide="shield" style="width: 14px; height: 14px;"></i>
+          <span>PROTECCIÓN GARANTIZADA</span>
+        </div>
+        <h2 class="section-title" style="text-align: left; max-width: 100%;">¿Por qué elegir <span class="text-red">SECUAVANTE</span>?</h2>
+        <p class="section-desc" style="text-align: left; margin-bottom: 24px;">
+          Entendemos que la seguridad requiere disciplina técnica, ética inquebrantable y un trato humano cercano. Ofrecemos excelencia operativa sin procesos excesivamente complejos.
+        </p>
+      </div>
+
+      <div class="reasons-stack">
+        <!-- Reason 1 -->
+        <div class="reason-card reveal-on-scroll delay-100">
+          <div class="reason-icon"><i data-lucide="users" style="width: 20px; height: 20px;"></i></div>
+          <div>
+            <h4 class="reason-title">Filtros Éticos y de Confianza</h4>
+            <p class="reason-desc">Realizamos pruebas toxicológicas periódicas y de antecedentes para asegurar la total integridad del personal asignado.</p>
+          </div>
+        </div>
+
+        <!-- Reason 2 -->
+        <div class="reason-card reveal-on-scroll delay-200">
+          <div class="reason-icon"><i data-lucide="shield-check" style="width: 20px; height: 20px;"></i></div>
+          <div>
+            <h4 class="reason-title">Alineación Oficial (REPSE)</h4>
+            <p class="reason-desc">Registro vigente SSC y REPSE, asumiendo plena responsabilidad laboral para mitigar riesgos legales de tu empresa.</p>
+          </div>
+        </div>
+
+        <!-- Reason 3 -->
+        <div class="reason-card reveal-on-scroll delay-300">
+          <div class="reason-icon"><i data-lucide="clock" style="width: 20px; height: 20px;"></i></div>
+          <div>
+            <h4 class="reason-title">Supervisión Continua 24/7</h4>
+            <p class="reason-desc">Contamos con patrullas de supervisión aleatoria y centro de monitoreo operativo activo todo el año.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Section -->
+  <section class="trust-section">
+    <div class="container trust-grid">
+      <div class="policy-box reveal-on-scroll">
+        <div class="policy-header">
+          <i data-lucide="shield-alert" class="policy-icon" style="width: 24px; height: 24px;"></i>
+          <h3 class="policy-title">Política de Calidad y Compromiso</h3>
+        </div>
+        <p class="policy-desc">
+          En SECUAVANTE, asumimos la responsabilidad de resguardar tu tranquilidad. Nos comprometemos a mantener un control riguroso de selección, capacitación continua de nuestros elementos ante la STPS y apego absoluto a la regulación vigente de la SSC de la CDMX. Tu confianza es nuestro activo más valioso.
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card reveal-on-scroll delay-100">
+          <div class="stat-num">100%</div>
+          <p class="stat-label">Personal Registrado</p>
+          <p class="stat-sub">SSC, REPSE, STPS</p>
+        </div>
+        <div class="stat-card reveal-on-scroll delay-200">
+          <div class="stat-num">24/7</div>
+          <p class="stat-label">Cobertura Activa</p>
+          <p class="stat-sub">Central de Monitoreo</p>
+        </div>
+        <div class="stat-card reveal-on-scroll delay-300">
+          <div class="stat-num">0%</div>
+          <p class="stat-label">Tolerancia Nocivos</p>
+          <p class="stat-sub">Prueba Antidoping</p>
+        </div>
+        <div class="stat-card reveal-on-scroll delay-400">
+          <div class="stat-num">10+</div>
+          <p class="stat-label">Años de Confianza</p>
+          <p class="stat-sub">Trayectoria Operativa</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contacto" class="contact-section">
+    <div class="container contact-grid">
+      <div class="contact-info reveal-on-scroll">
+        <h2 class="contact-title">Hablemos de tu <span class="text-red">Tranquilidad</span></h2>
+        <p class="contact-desc">
+          Compártenos tus requerimientos de protección. Uno de nuestros coordinadores ejecutivos de seguridad se pondrá en contacto contigo para armar una propuesta a la medida de tu presupuesto.
+        </p>
+        <div class="contact-methods">
+          <div class="contact-method">
+            <div class="method-icon"><i data-lucide="mail" style="width: 18px; height: 18px;"></i></div>
+            <div>
+              <span class="method-title">Correo Electrónico</span>
+              <p class="method-value">contacto@secuavante.com</p>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="method-icon"><i data-lucide="phone" style="width: 18px; height: 18px;"></i></div>
+            <div>
+              <span class="method-title">Atención Directa</span>
+              <p class="method-value">55 1234 5678</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-card reveal-on-scroll delay-200">
+        <form id="quoteForm" onsubmit="handleQuoteSubmit(event)">
+          <div class="form-group-row">
+            <div class="form-group">
+              <label for="name">Nombre Completo</label>
+              <input type="text" id="name" class="form-control" placeholder="Juan Pérez" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Teléfono</label>
+              <input type="tel" id="phone" class="form-control" placeholder="5512345678" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Correo Corporativo</label>
+            <input type="email" id="email" class="form-control" placeholder="juan.perez@empresa.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="service">Servicio de Interés</label>
+            <select id="service" class="form-control" required>
+              <option value="">Selecciona una opción</option>
+              <option value="intramuros">Seguridad Intramuros de Bienes</option>
+              <option value="gps">Monitoreo Satelital GPS</option>
+              <option value="eventos">Eventos Sociales y Privados</option>
+              <option value="traslados">Protección Ejecutiva y Escoltas</option>
+              <option value="monitoreo">Vigilancia CCTV y Alarmas</option>
+              <option value="investigacion">Consultoría y Análisis de Riesgo</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Mensaje / Detalles Adicionales</label>
+            <textarea id="message" class="form-control" placeholder="Dinos cuántos guardias o qué tipo de protección necesitas..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Enviar Solicitud de Cotización</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" style="height: 32px; width: 32px;">
+            <path d="M21 2L5 7V19C5 30.1 11.8 40.5 21 44C30.2 40.5 37 30.1 37 19V7L21 2Z" fill="#E63946"/>
+            <path d="M21 12L25 16H22V22H20V16H17L21 12Z" fill="#FFFFFF"/>
+            <path d="M15 26H27V28H15V26Z" fill="#FFFFFF"/>
+          </svg>
+          <span class="brand-name" style="color: #FFFFFF;">SECU<span class="text-red">AVANTE</span></span>
+        </div>
+        <p class="footer-desc">
+          Resguardo profesional con sentido humano, regulado por la Secretaría de Seguridad Ciudadana y alineado con los más altos estándares corporativos del país.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Enlaces Rápidos</h4>
+        <ul class="footer-links">
+          <li><a href="#hero-corp">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Encuéntranos</h4>
+        <p class="footer-desc" style="margin-bottom: 16px;">CDMX, México.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn"><i data-lucide="facebook" style="width: 16px; height: 16px;"></i></a>
+          <a href="#" class="social-btn"><i data-lucide="linkedin" style="width: 16px; height: 16px;"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 SECUAVANTE S.A. de C.V. Todos los derechos reservados. Permiso oficial SSC/REPSE vigente.</p>
+    </div>
+  </footer>
+
+  <!-- Details Pop-up Modal -->
+  <div id="serviceModal" class="modal-overlay" onclick="closeServiceModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeServiceModal()">
+        <i data-lucide="x" style="width: 16px; height: 16px;"></i>
+      </button>
+      
+      <!-- Top Image Banner in Modal -->
+      <div class="modal-image-wrap">
+        <img id="modalImg" src="" alt="Banner de Servicio" class="modal-img">
+      </div>
+
+      <div class="modal-body-padding">
+        <h3 id="modalTitle" class="modal-title">Título del Servicio</h3>
+        <p id="modalDesc" class="modal-desc">Descripción completa del servicio corporativo.</p>
+
+        <h4 class="modal-subtitle">Características Destacadas:</h4>
+        <ul id="modalBullets" class="modal-features">
+          <!-- Populated by JS -->
+        </ul>
+
+        <button class="modal-btn-action" onclick="quoteThisService()">Cotizar este Servicio Ahora</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Scroll Reveal Intersection Observer
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+      scrollObserver.observe(el);
+    });
+
+    // Scroll helpers
+    function scrollToContact() {
+      document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Services detailed database
+    const servicesDataMap = {
+      intramuros: {
+        title: "Seguridad Intramuros de Bienes",
+        image: "service_intramuros.png",
+        fullDesc: "Nuestro servicio intramuros provee guardias uniformados debidamente registrados ante la SSC de la CDMX. Realizan control riguroso de visitantes, contratistas y vehículos, rondines de inspección continua y prevención de siniestros.",
+        bullets: ["Guardias Registrados ante la SSC", "Control de Accesos Vehiculares", "Supervisión Continua 24/7"]
+      },
+      gps: {
+        title: "Monitoreo Satelital GPS",
+        image: "service_gps.png",
+        fullDesc: "Vigila tus unidades de forma remota. Cuenta con sensores de pánico, apagado electrónico del motor, alertas de velocidad y creación de geocercas para rutas seguras de transporte.",
+        bullets: ["Ubicación en Tiempo Real", "Paro de Motor Remoto", "Botón de Alerta / Pánico"]
+      },
+      eventos: {
+        title: "Eventos Sociales y Privados",
+        image: "service_eventos.png",
+        fullDesc: "Brindamos seguridad especializada para eventos corporativos, bodas, masivos y conferencias con detectores de metal Garrett y personal altamente cortés entrenado en manejo de aforos.",
+        bullets: ["Detectores de Metal Garrett", "Logística de Accesos", "Atención Profesional y Cortés"]
+      },
+      traslados: {
+        title: "Protección Ejecutiva y Escoltas",
+        image: "service_traslados.png",
+        fullDesc: "Conductores entrenados en evasión y manejo defensivo con opción a vehículos blindados. Absoluta discreción y profesionalismo para resguardo ejecutivo de directivos y traslados de alta prioridad.",
+        bullets: ["Conductores Certificados", "Custodia de Valores", "Discreción Absoluta"]
+      },
+      monitoreo: {
+        title: "Vigilancia CCTV y Alarmas",
+        image: "service_monitoreo.png",
+        fullDesc: "Supervisión automatizada con respuesta rápida. Al activarse un sensor o detectarse anomalía, coordinamos inmediatamente el despacho policial en CDMX/Edomex desde nuestra central.",
+        bullets: ["Monitoreo Continuo 24/7", "Enlace Directo de Emergencia", "Analíticos de Movimiento Avanzados"]
+      },
+      investigacion: {
+        title: "Consultoría y Análisis de Riesgo",
+        image: "service_consultoria.png",
+        fullDesc: "Protege tu contratación. Ofrecemos validación completa de antecedentes, pruebas de antidoping de 5 páneles y análisis físico para mitigar riesgos internos y auditar vulnerabilidades.",
+        bullets: ["Estudios Socioeconómicos Completos", "Antidoping de 5 Páneles", "Auditoría de Vulnerabilidades"]
+      }
+    };
+
+    let activeServiceId = null;
+
+    // Modal Control
+    function openServiceModal(serviceId) {
+      const s = servicesDataMap[serviceId];
+      if (!s) return;
+
+      activeServiceId = serviceId;
+      document.getElementById('modalTitle').innerText = s.title;
+      document.getElementById('modalDesc').innerText = s.fullDesc;
+      document.getElementById('modalImg').src = s.image;
+
+      const bulletsContainer = document.getElementById('modalBullets');
+      bulletsContainer.innerHTML = '';
+      s.bullets.forEach(b => {
+        const li = document.createElement('li');
+        li.innerHTML = `<i data-lucide="check" style="width: 16px; height: 16px;"></i><span>${b}</span>`;
+        bulletsContainer.appendChild(li);
+      });
+
+      // Update newly added icons
+      lucide.createIcons();
+
+      document.getElementById('serviceModal').classList.add('active');
+    }
+
+    function closeServiceModal() {
+      document.getElementById('serviceModal').classList.remove('active');
+    }
+
+    // Modal action button click
+    function quoteThisService() {
+      if (activeServiceId) {
+        document.getElementById('service').value = activeServiceId;
+      }
+      closeServiceModal();
+      scrollToContact();
+    }
+
+    // Contact Form Submit Handler
+    function handleQuoteSubmit(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const email = document.getElementById('email').value;
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value;
+
+      // Premium feedback on submit
+      alert(`¡Muchas gracias, ${name}!\n\nHemos recibido correctamente tu solicitud de cotización para el servicio de "${servicesDataMap[service]?.title || service}". Un asesor de SECUAVANTE se comunicará contigo al teléfono ${phone} o correo ${email} en menos de 24 horas.`);
+      
+      // Reset form
+      document.getElementById('quoteForm').reset();
+    }
+  </script>
+</body>
+</html>

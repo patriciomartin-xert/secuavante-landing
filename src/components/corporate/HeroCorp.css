@@ -117,159 +117,89 @@
   color: #475569;
 }
 
-/* Trust Main Card Panel (Right Column) */
+/* Trust Main Card Panel (Right Column) - Optimized for single high-impact photo and overlay badges */
 .hero-corp-panel {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
   justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .hero-corp-image-container {
   position: relative;
   width: 100%;
-  max-width: 420px;
+  max-width: 520px; /* Made the person larger as requested */
   border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+  overflow: visible; /* Allow floating badges to slightly overflow beautifully */
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.1);
   border: 1px solid rgba(148, 163, 184, 0.15);
+  background: #FFFFFF;
 }
 
 .friendly-guard-img {
   width: 100%;
-  height: 280px;
+  height: 480px; /* Made much larger to fit the entire height of the fold */
   object-fit: cover;
   display: block;
+  border-radius: var(--radius-lg);
   transition: transform 0.4s ease;
 }
 
 .hero-corp-image-container:hover .friendly-guard-img {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
+/* Elegant Value overlay badges */
 .guard-overlay-badge {
   position: absolute;
-  bottom: 16px;
-  left: 16px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.725rem;
-  font-weight: 700;
-  color: #0F172A;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  gap: 12px;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+  z-index: 10;
+  transition: transform 0.3s ease;
 }
 
-.trust-main-card {
-  width: 100%;
-  max-width: 420px;
-  background: #FFFFFF;
-  border: 1px solid rgba(148, 163, 184, 0.15);
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.05);
-  text-align: center;
+.guard-overlay-badge:hover {
+  transform: translateY(-2px);
+}
+
+.badge-top-left {
+  top: 24px;
+  left: -28px; /* Beautiful overflow effect */
+}
+
+.badge-bottom-right {
+  bottom: 24px;
+  right: -28px; /* Beautiful overflow effect */
+}
+
+.badge-text-stack {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  text-align: left;
+  line-height: 1.2;
 }
 
-.shield-glow-box-corp {
-  width: 68px;
-  height: 68px;
-  border-radius: 18px;
-  background: rgba(230, 57, 70, 0.06);
-  border: 1px solid rgba(230, 57, 70, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.trust-panel-title {
-  font-size: 1.25rem;
+.badge-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.825rem;
   font-weight: 800;
   color: #0F172A;
-  margin-bottom: 4px;
 }
 
-.trust-panel-sub {
-  font-size: 0.8rem;
+.badge-sub {
+  font-size: 0.7rem;
   font-weight: 600;
-  color: #64748B;
+  color: #E63946;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 24px;
-}
-
-.permits-corp-list {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  width: 100%;
-  margin-bottom: 24px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #F1F5F9;
-}
-
-.permit-corp-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  text-align: left;
-}
-
-.text-blue-corp {
-  color: #2563EB;
-  margin-top: 2px;
-}
-
-.permit-corp-label {
-  display: block;
-  font-size: 0.7rem;
-  color: #64748B;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-.permit-corp-val {
-  display: block;
-  font-size: 0.85rem;
-  color: #0F172A;
-  font-weight: 700;
-}
-
-.stats-corp-mini {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  width: 100%;
-}
-
-.stat-corp-box {
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  padding: 10px;
-  border-radius: var(--radius-sm);
-}
-
-.stat-corp-num {
-  display: block;
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: #0F172A;
-}
-
-.stat-corp-lbl {
-  display: block;
-  font-size: 0.725rem;
-  color: #64748B;
-  font-weight: 600;
   margin-top: 2px;
 }
 
@@ -303,7 +233,25 @@
     display: none; /* Hide long filler text for clean mobile view */
   }
   .friendly-guard-img {
-    height: 200px !important;
+    height: 240px !important;
+  }
+  .badge-top-left {
+    top: 12px !important;
+    left: 12px !important;
+  }
+  .badge-bottom-right {
+    bottom: 12px !important;
+    right: 12px !important;
+  }
+  .guard-overlay-badge {
+    padding: 6px 12px !important;
+    gap: 8px !important;
+  }
+  .badge-title {
+    font-size: 0.725rem !important;
+  }
+  .badge-sub {
+    font-size: 0.6rem !important;
   }
   .hero-actions-corp {
     margin-bottom: 24px;

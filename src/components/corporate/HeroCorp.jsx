@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, FileCheck, CheckCircle2, Award, Users, HeartHandshake } from 'lucide-react';
+import { ShieldCheck, CheckCircle2, Users, HeartHandshake, Clock } from 'lucide-react';
 import './HeroCorp.css';
 
 export default function HeroCorp({ onOpenQuote }) {
@@ -43,49 +43,26 @@ export default function HeroCorp({ onOpenQuote }) {
           </div>
         </div>
 
-        {/* Right: Modern, Clean Metrics Panel (No sci-fi, human trust elements) */}
+        {/* Right: Large, friendly human photo of security officer with elegant overlay tags (No cards underneath!) */}
         <div className="hero-corp-panel">
           <div className="hero-corp-image-container">
-            <img src="/friendly_security.png" alt="Personal de Seguridad Certificado" className="friendly-guard-img" />
-            <div className="guard-overlay-badge">
-              <Users size={14} className="text-red-corp" />
-              <span>Personal Certificado y Confiable</span>
-            </div>
-          </div>
-
-          <div className="trust-main-card">
-            <div className="shield-glow-box-corp">
-              <Shield size={36} className="text-red-corp" />
-            </div>
-
-            <h3 className="trust-panel-title">SECUAVANTE S.A. DE C.V.</h3>
-            <p className="trust-panel-sub">Registro Federal y Local Oficial</p>
-
-            <div className="permits-corp-list">
-              <div className="permit-corp-item">
-                <FileCheck size={16} className="text-blue-corp" />
-                <div>
-                  <span className="permit-corp-label">Secretaría del Trabajo:</span>
-                  <strong className="permit-corp-val">Registro REPSE AR129038/2024</strong>
-                </div>
-              </div>
-              <div className="permit-corp-item">
-                <Award size={16} className="text-blue-corp" />
-                <div>
-                  <span className="permit-corp-label">Secretaría de Seguridad CDMX:</span>
-                  <strong className="permit-corp-val">Permiso Oficial N° 0304-22</strong>
-                </div>
+            <img src="/friendly_security.png" alt="Personal de Seguridad Certificado Secuavante" className="friendly-guard-img" />
+            
+            {/* Top-Left Floating Badge */}
+            <div className="guard-overlay-badge badge-top-left">
+              <Clock size={16} className="text-red-corp animate-pulse" />
+              <div className="badge-text-stack">
+                <span className="badge-title">Atención Continua</span>
+                <span className="badge-sub">Soporte Operativo 24/7</span>
               </div>
             </div>
 
-            <div className="stats-corp-mini">
-              <div className="stat-corp-box">
-                <span className="stat-corp-num">100%</span>
-                <span className="stat-corp-lbl">Socioeconómico</span>
-              </div>
-              <div className="stat-corp-box">
-                <span className="stat-corp-num">24/7</span>
-                <span className="stat-corp-lbl">Soporte Directo</span>
+            {/* Bottom-Right Floating Badge */}
+            <div className="guard-overlay-badge badge-bottom-right">
+              <ShieldCheck size={16} className="text-emerald" />
+              <div className="badge-text-stack">
+                <span className="badge-title">Personal Registrado</span>
+                <span className="badge-sub">Filtros ante la SSC y REPSE</span>
               </div>
             </div>
           </div>

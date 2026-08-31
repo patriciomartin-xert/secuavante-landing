@@ -115,9 +115,84 @@
 
 @media (max-width: 1024px) {
   .trust-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
   }
-  .quality-policy-card {
+}
+
+@media (max-width: 768px) {
+  .trust-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .trust-badge-card {
+    padding: 12px 8px;
+    text-align: center;
+    align-items: center;
+    border-radius: var(--radius-sm);
+  }
+
+  .trust-card-top {
     flex-direction: column;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .trust-icon-box {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+  }
+
+  .trust-icon-box svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .trust-badge-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+    line-height: 1.2;
+  }
+
+  .trust-badge-code {
+    font-size: 0.725rem;
+    margin-bottom: 0;
+  }
+
+  /* Hide long descriptions and check lines on mobile to keep squares compact */
+  .trust-badge-desc,
+  .trust-check-line,
+  .badge-tag-cyan,
+  .trust-card-top .badge-tag {
+    display: none !important;
+  }
+
+  .quality-policy-card {
+    padding: 16px 18px;
+    gap: 12px;
+  }
+
+  .policy-icon-wrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .policy-icon-wrapper svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .policy-title {
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+  }
+
+  .policy-quote {
+    font-size: 0.825rem;
+    line-height: 1.5;
   }
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Building2, 
   Navigation, 
@@ -23,6 +23,8 @@ import './Services.css';
 export default function Services({ onSelectService }) {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedModal, setSelectedModal] = useState(null);
+  const sliderRef = useRef(null);
+  const isUserInteracting = useRef(false);
 
   const servicesData = [
     {
@@ -133,6 +135,52 @@ export default function Services({ onSelectService }) {
     ? servicesData 
     : servicesData.filter(s => s.category === activeCategory);
 
+  // Auto-scroll logic for mobile screen slider
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    let intervalId;
+    let resumeTimeoutId;
+
+    const startAutoScroll = () => {
+      intervalId = setInterval(() => {
+        if (window.innerWidth > 768 || isUserInteracting.current) return;
+
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+        const cardWidth = slider.firstElementChild ? slider.firstElementChild.clientWidth + 16 : 300;
+
+        if (slider.scrollLeft + cardWidth >= maxScroll - 10) {
+          slider.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        }
+      }, 3400);
+    };
+
+    const handleUserInteraction = () => {
+      isUserInteracting.current = true;
+      clearTimeout(resumeTimeoutId);
+      resumeTimeoutId = setTimeout(() => {
+        isUserInteracting.current = false;
+      }, 6000);
+    };
+
+    slider.addEventListener('touchstart', handleUserInteraction, { passive: true });
+    slider.addEventListener('scroll', handleUserInteraction, { passive: true });
+
+    startAutoScroll();
+
+    return () => {
+      clearInterval(intervalId);
+      clearTimeout(resumeTimeoutId);
+      if (slider) {
+        slider.removeEventListener('touchstart', handleUserInteraction);
+        slider.removeEventListener('scroll', handleUserInteraction);
+      }
+    };
+  }, [filteredServices]);
+
   return (
     <section id="servicios" className="section-padding services-section">
       <div className="container">
@@ -173,16 +221,17 @@ export default function Services({ onSelectService }) {
               Eventos & Protección VIP
             </button>
           </div>
+
           {/* Mobile Swipe Hint */}
           <div className="mobile-swipe-hint">
             <ChevronRight size={14} className="swipe-arrow left" />
-            <span>Desliza lateralmente para explorar los servicios</span>
+            <span>Desliza o espera para ver la galería completa</span>
             <ChevronRight size={14} className="swipe-arrow right" />
           </div>
         </div>
 
-        {/* Services Grid - Horizontal swipe on mobile, 3-col grid on desktop */}
-        <div className="services-grid">
+        {/* Services Grid with Auto-Play Slider on Mobile */}
+        <div className="services-grid" ref={sliderRef}>
           {filteredServices.map((service) => {
             const IconComponent = service.icon;
             const BadgeIcon = service.badge.icon;

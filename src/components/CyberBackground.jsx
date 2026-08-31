@@ -17,7 +17,7 @@ export default function CyberBackground() {
     const mouse = {
       x: -1000,
       y: -1000,
-      radius: 120, // Slightly reduced radius for subtle precision
+      radius: 120,
     };
 
     // Store click pulse waves
@@ -28,16 +28,9 @@ export default function CyberBackground() {
       mouse.y = e.clientY;
     };
 
+    // Trigger shockwave ONLY on discrete explicit click (not while scrolling on mobile)
     const handleClick = (e) => {
       triggerPulse(e.clientX, e.clientY);
-    };
-
-    const handleTouch = (e) => {
-      if (e.touches && e.touches[0]) {
-        mouse.x = e.touches[0].clientX;
-        mouse.y = e.touches[0].clientY;
-        triggerPulse(e.touches[0].clientX, e.touches[0].clientY);
-      }
     };
 
     const triggerPulse = (cx, cy) => {
@@ -60,7 +53,6 @@ export default function CyberBackground() {
 
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('click', handleClick);
-    window.addEventListener('touchstart', handleTouch, { passive: true });
     window.addEventListener('resize', handleResize);
 
     // Cyber characters pool
@@ -80,7 +72,6 @@ export default function CyberBackground() {
           y: Math.random() * height,
           speed: 0.8 + Math.random() * 1.5,
           char: hexChars[Math.floor(Math.random() * hexChars.length)],
-          isHitByWave: false,
         };
       }
     };
@@ -88,13 +79,12 @@ export default function CyberBackground() {
     initGrid();
 
     const draw = () => {
-      // Dark semi-transparent clear for smooth motion trail
       ctx.fillStyle = 'rgba(8, 12, 20, 0.22)';
       ctx.fillRect(0, 0, width, height);
 
       ctx.font = `${fontSize - 3}px "Outfit", monospace`;
 
-      // 1. Update and draw expanding shockwaves from clicks
+      // 1. Draw shockwaves from explicit clicks
       for (let w = shockwaves.length - 1; w >= 0; w--) {
         const wave = shockwaves[w];
         wave.radius += 12;
@@ -105,7 +95,6 @@ export default function CyberBackground() {
           continue;
         }
 
-        // Draw expanding pulse ring
         ctx.beginPath();
         ctx.arc(wave.x, wave.y, wave.radius, 0, Math.PI * 2);
         ctx.strokeStyle = `rgba(56, 189, 248, ${wave.opacity})`;
@@ -114,14 +103,12 @@ export default function CyberBackground() {
         ctx.shadowBlur = 12;
         ctx.stroke();
 
-        // Draw secondary inner pulse
         ctx.beginPath();
         ctx.arc(wave.x, wave.y, Math.max(0, wave.radius - 30), 0, Math.PI * 2);
         ctx.strokeStyle = `rgba(230, 57, 70, ${wave.opacity * 0.7})`;
         ctx.lineWidth = 1;
         ctx.stroke();
 
-        // Draw HUD label near click center
         if (wave.opacity > 0.4) {
           ctx.fillStyle = `rgba(16, 185, 129, ${wave.opacity})`;
           ctx.font = '10px "Outfit", sans-serif';
@@ -135,13 +122,11 @@ export default function CyberBackground() {
       for (let i = 0; i < gridData.length; i++) {
         const item = gridData[i];
 
-        // Check if mouse is near
         const dx = mouse.x - item.x;
         const dy = mouse.y - item.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         const isMouseNear = dist < mouse.radius;
 
-        // Check if hit by any active click shockwave
         let isHitByWave = false;
         for (let w = 0; w < shockwaves.length; w++) {
           const wave = shockwaves[w];
@@ -155,13 +140,11 @@ export default function CyberBackground() {
         }
 
         if (isHitByWave) {
-          // Shockwave hit: Bright emerald / white decrypted flash
           ctx.shadowBlur = 10;
           ctx.shadowColor = '#10B981';
           ctx.fillStyle = '#10B981';
           item.char = secretKeywords[Math.floor(Math.random() * secretKeywords.length)][0];
         } else if (isMouseNear) {
-          // Mouse hover: Subtle, elegant cyan/slate glow (non-intrusive)
           const glowRatio = 1 - dist / mouse.radius;
           ctx.shadowBlur = 6;
           ctx.shadowColor = 'rgba(56, 189, 248, 0.4)';
@@ -171,7 +154,6 @@ export default function CyberBackground() {
             item.char = hexChars[Math.floor(Math.random() * hexChars.length)];
           }
         } else {
-          // Normal background state: Very subtle translucent slate
           ctx.shadowBlur = 0;
           ctx.fillStyle = 'rgba(100, 116, 139, 0.1)';
           
@@ -182,17 +164,15 @@ export default function CyberBackground() {
 
         ctx.fillText(item.char, item.x, item.y);
 
-        // Advance character
         item.y += isMouseNear ? item.speed * 1.5 : item.speed;
 
-        // Reset off bottom
         if (item.y > height) {
           item.y = -fontSize;
           item.speed = 0.8 + Math.random() * 1.5;
         }
       }
 
-      // 3. Draw subtle cursor indicator aura (non-intrusive slate/cyan translucent lens)
+      // 3. Subtle cursor indicator aura
       if (mouse.x > 0 && mouse.y > 0) {
         const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 5, mouse.x, mouse.y, mouse.radius);
         gradient.addColorStop(0, 'rgba(56, 189, 248, 0.08)');
@@ -214,7 +194,6 @@ export default function CyberBackground() {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('click', handleClick);
-      window.removeEventListener('touchstart', handleTouch);
       window.removeEventListener('resize', handleResize);
     };
   }, []);

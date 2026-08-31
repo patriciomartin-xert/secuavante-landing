@@ -250,13 +250,25 @@
 
 @media (max-width: 640px) {
   .hero-corp-section {
-    padding-top: 100px;
-    padding-bottom: 48px;
+    padding-top: 110px;
+    padding-bottom: 32px;
   }
   .hero-corp-title {
-    font-size: 2rem;
+    font-size: 2.1rem;
+    line-height: 1.25;
   }
   .hero-corp-desc {
-    font-size: 0.95rem;
+    display: none; /* Hide long filler text for clean mobile view */
+  }
+  .hero-actions-corp {
+    margin-bottom: 24px;
+    gap: 12px;
+  }
+  .btn-primary-corp-large,
+  .btn-secondary-corp-large {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    text-align: center;
   }
 }

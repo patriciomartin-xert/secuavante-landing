@@ -46,3 +46,27 @@
   color: #64748B;
   line-height: 1.5;
 }
+
+@media (max-width: 640px) {
+  .selection-grid-corp {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 16px !important;
+    padding-bottom: 16px !important;
+    scrollbar-width: none;
+  }
+  .selection-grid-corp::-webkit-scrollbar {
+    display: none;
+  }
+  .selection-card-corp {
+    min-width: 240px !important;
+    max-width: 240px !important;
+    scroll-snap-align: center !important;
+    flex-shrink: 0 !important;
+    padding: 20px 16px !important;
+  }
+  .selection-desc-corp-text {
+    display: none; /* Hide description paragraphs on mobile */
+  }
+}

@@ -89,6 +89,35 @@
 
 @media (max-width: 768px) {
   .trust-grid-corp {
-    grid-template-columns: 1fr;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+    margin-bottom: 24px !important;
+  }
+  .trust-card-corp-badge {
+    padding: 12px 6px !important;
+    border-radius: var(--radius-sm) !important;
+  }
+  .badge-icon-box-corp {
+    width: 32px !important;
+    height: 32px !important;
+    margin-bottom: 8px !important;
+  }
+  .trust-card-corp-badge h3 {
+    font-size: 0.725rem !important;
+  }
+  .badge-code-corp {
+    font-size: 0.65rem !important;
+    margin-bottom: 0px !important;
+  }
+  .trust-card-corp-badge p {
+    display: none; /* Hide long paragraph details on mobile */
+  }
+  .quality-policy-corp-panel {
+    padding: 20px 16px !important;
+  }
+  .quality-text-corp {
+    font-size: 0.8rem !important;
+    line-height: 1.5;
   }
 }

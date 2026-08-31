@@ -35,8 +35,13 @@
 .step-number {
   width: 36px;
   height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--text-main);
   font-family: var(--font-heading);
   font-weight: 800;
@@ -44,16 +49,20 @@
   align-items: center;
   justify-content: center;
   font-size: 0.95rem;
+  transition: all 0.3s ease;
 }
 
 .step-nav-card.is-active .step-number {
   background: var(--primary-red);
+  border-color: #FF5A69;
   color: #FFFFFF;
+  box-shadow: 0 0 12px rgba(230, 57, 70, 0.5);
 }
 
 .step-info {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .step-tag {
@@ -67,6 +76,9 @@
   font-size: 0.925rem;
   color: var(--text-main);
   font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .step-detail-card {
@@ -187,7 +199,7 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 10px;
-    padding: 4px 2px 14px 2px;
+    padding: 6px 4px 16px 4px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
@@ -198,10 +210,31 @@
 
   .step-nav-card {
     flex-shrink: 0;
-    min-width: 165px;
-    max-width: 200px;
+    min-width: 180px;
+    max-width: 220px;
     scroll-snap-align: start;
-    padding: 12px 14px;
+    padding: 10px 16px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .step-nav-card.is-active {
+    background: linear-gradient(135deg, rgba(230, 57, 70, 0.25) 0%, rgba(30, 41, 92, 0.5) 100%);
+    border-color: #E63946;
+    box-shadow: 0 4px 16px rgba(230, 57, 70, 0.35);
+  }
+
+  .step-number {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    font-size: 0.875rem;
   }
 
   .step-detail-card {

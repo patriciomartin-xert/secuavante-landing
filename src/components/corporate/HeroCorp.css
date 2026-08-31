@@ -254,6 +254,7 @@
   }
   .friendly-guard-img {
     height: 220px !important; /* Perfect height to fit without crowding */
+    object-position: top center; /* Slide crop window up to show face/hair fully on mobile! */
   }
   .badge-top-left {
     display: none !important; /* Hide top-left badge on mobile so it never covers the guard's face */

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CyberBackground from './components/CyberBackground';
 import LockIntro from './components/LockIntro';
 import Navbar from './components/Navbar';
@@ -27,6 +27,30 @@ export default function App() {
   const [isExploding, setIsExploding] = useState(false);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [selectedServiceForQuote, setSelectedServiceForQuote] = useState(null);
+
+  // Trigger high-end scroll reveal transitions as the user scrolls
+  useEffect(() => {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px' // triggers slightly before entering
+      }
+    );
+
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    revealElements.forEach((el) => revealObserver.observe(el));
+
+    return () => {
+      revealObserver.disconnect();
+    };
+  }, [landingVersion]); // Re-run when changing version to bind new DOM elements!
 
   const handleTriggerQuote = (service = null) => {
     if (service) {

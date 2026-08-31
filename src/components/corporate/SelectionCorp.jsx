@@ -30,7 +30,7 @@ export default function SelectionCorp() {
     <section id="seleccion-corp" className="selection-corp-section">
       <div className="container">
         
-        <div className="section-header-corp">
+        <div className="section-header-corp reveal-on-scroll">
           <span className="section-subtitle-corp">FILTROS DE CONFIANZA</span>
           <h2 className="section-title-corp">¿Cómo Seleccionamos a <span className="text-red-corp">Nuestros Guardias?</span></h2>
           <p className="section-desc-corp">
@@ -41,8 +41,9 @@ export default function SelectionCorp() {
         <div className="selection-grid-corp">
           {steps.map((s, i) => {
             const Icon = s.icon;
+            const delayClass = `delay-${i * 100}`;
             return (
-              <div key={i} className="selection-card-corp">
+              <div key={i} className={`selection-card-corp reveal-on-scroll ${delayClass}`}>
                 <div className="selection-icon-corp">
                   <Icon size={24} className="text-red-corp" />
                 </div>

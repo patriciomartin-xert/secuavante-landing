@@ -60,7 +60,7 @@ export default function ServicesCorp({ onSelectService }) {
     <section id="servicios-corp" className="services-corp-section">
       <div className="container">
         
-        <div className="section-header-corp">
+        <div className="section-header-corp reveal-on-scroll">
           <span className="section-subtitle-corp">NUESTRAS SOLUCIONES</span>
           <h2 className="section-title-corp">Servicios Profesionales de <span className="text-red-corp">Seguridad Privada</span></h2>
           <p className="section-desc-corp">
@@ -69,12 +69,13 @@ export default function ServicesCorp({ onSelectService }) {
         </div>
 
         <div className="services-grid-corp">
-          {servicesData.map((s) => {
+          {servicesData.map((s, idx) => {
             const Icon = s.icon;
+            const delayClass = `delay-${(idx % 4) * 100}`;
             return (
               <div 
                 key={s.id} 
-                className="service-card-corp"
+                className={`service-card-corp reveal-on-scroll ${delayClass}`}
                 onClick={() => setSelectedService(s)}
               >
                 <div className="icon-box-corp">
@@ -94,7 +95,7 @@ export default function ServicesCorp({ onSelectService }) {
                 </ul>
 
                 <div className="card-footer-corp">
-                  <span>Saber más e Cotizar</span>
+                  <span>Saber más</span>
                   <ChevronRight size={14} />
                 </div>
               </div>

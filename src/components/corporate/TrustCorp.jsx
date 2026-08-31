@@ -7,7 +7,7 @@ export default function TrustCorp() {
     <section id="acreditaciones-corp" className="trust-corp-section">
       <div className="container">
         
-        <div className="section-header-corp">
+        <div className="section-header-corp reveal-on-scroll">
           <span className="section-subtitle-corp">APEGO LEGAL Y JURÍDICO</span>
           <h2 className="section-title-corp">Acreditaciones y <span className="text-red-corp">Registros Oficiales</span></h2>
           <p className="section-desc-corp">
@@ -16,7 +16,7 @@ export default function TrustCorp() {
         </div>
 
         <div className="trust-grid-corp">
-          <div className="trust-card-corp-badge">
+          <div className="trust-card-corp-badge reveal-on-scroll">
             <div className="badge-icon-box-corp">
               <FileText size={22} className="text-red-corp" />
             </div>
@@ -25,7 +25,7 @@ export default function TrustCorp() {
             <p>Registro ante la STPS para la prestación de servicios y obras de seguridad privada especializada.</p>
           </div>
 
-          <div className="trust-card-corp-badge highlighted-badge-corp">
+          <div className="trust-card-corp-badge highlighted-badge-corp reveal-on-scroll delay-100">
             <div className="badge-icon-box-corp">
               <ShieldCheck size={22} className="text-red-corp" />
             </div>
@@ -34,7 +34,7 @@ export default function TrustCorp() {
             <p>Permiso operativo formal otorgado por la Secretaría de Seguridad Ciudadana de la Ciudad de México.</p>
           </div>
 
-          <div className="trust-card-corp-badge">
+          <div className="trust-card-corp-badge reveal-on-scroll delay-200">
             <div className="badge-icon-box-corp">
               <Scale size={22} className="text-red-corp" />
             </div>
@@ -45,7 +45,7 @@ export default function TrustCorp() {
         </div>
 
         {/* Quality Policy */}
-        <div className="quality-policy-corp-panel">
+        <div className="quality-policy-corp-panel reveal-on-scroll">
           <h4 className="quality-title-corp">Nuestra Política de Calidad</h4>
           <p className="quality-text-corp">
             "En <strong>SECUAVANTE, S.A. de C.V.</strong>, nos dedicamos a prestar servicios de protección y seguridad privada enfocados en satisfacer las expectativas de nuestros clientes mediante una gestión de riesgos efectiva, respetando los Derechos Humanos y cumpliendo con todas las leyes aplicables."

@@ -383,3 +383,33 @@ h1, h2, h3, h4, h5, h6 {
 .theme-corporate ::-webkit-scrollbar-thumb:hover {
   background: #E63946;
 }
+
+/* Premium Scroll Reveal Micro-animations */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delayed reveals for grids so cards pop in one after another */
+.reveal-on-scroll.delay-100 {
+  transition-delay: 0.1s;
+}
+
+.reveal-on-scroll.delay-200 {
+  transition-delay: 0.2s;
+}
+
+.reveal-on-scroll.delay-300 {
+  transition-delay: 0.3s;
+}
+
+.reveal-on-scroll.delay-400 {
+  transition-delay: 0.4s;
+}

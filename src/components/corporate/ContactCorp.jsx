@@ -25,7 +25,7 @@ export default function ContactCorp() {
         <div className="contact-corp-grid">
           
           {/* Left Column: Brief brand info & Direct details */}
-          <div className="contact-corp-brand-column">
+          <div className="contact-corp-brand-column reveal-on-scroll">
             <div className="brand-logo-corp-row">
               <SecuavanteLogo size={48} />
               <div className="brand-corp-text">
@@ -70,7 +70,7 @@ export default function ContactCorp() {
           </div>
 
           {/* Right Column: Clean Form */}
-          <div className="contact-corp-form-column">
+          <div className="contact-corp-form-column reveal-on-scroll delay-200">
             {sent ? (
               <div className="corp-sent-success">
                 <ShieldCheck size={48} className="text-emerald" />

@@ -10,6 +10,7 @@ export default function ServicesCorp({ onSelectService }) {
       id: 'intramuros',
       icon: Building2,
       title: 'Seguridad Intramuros de Bienes',
+      image: '/service_intramuros.png',
       shortDesc: 'Resguardo físico profesional y control de accesos para corporativos, plantas industriales, condominios y centros comerciales.',
       fullDesc: 'Nuestro servicio intramuros provee guardias uniformados debidamente registrados ante la SSC de la CDMX. Realizan control riguroso de visitantes, contratistas y vehículos, rondines de inspección continua y prevención de siniestros.',
       bullets: ['Guardias Registrados', 'Control de Accesos Vehiculares', 'Supervisión Continua 24/7']
@@ -18,6 +19,7 @@ export default function ServicesCorp({ onSelectService }) {
       id: 'gps',
       icon: Navigation,
       title: 'Monitoreo Satelital GPS',
+      image: '/service_gps.png',
       shortDesc: 'Localización y apagado remoto en tiempo real de flotillas comerciales, vehículos corporativos y particulares.',
       fullDesc: 'Vigila tus unidades de forma remota. Cuenta con sensores de pánico, apagado electrónico del motor, alertas de velocidad y creación de geocercas para rutas seguras de transporte.',
       bullets: ['Ubicación en Tiempo Real', 'Paro de Motor Remoto', 'Botón de Alerta / Pánico']
@@ -26,6 +28,7 @@ export default function ServicesCorp({ onSelectService }) {
       id: 'eventos',
       icon: ShieldCheck,
       title: 'Eventos Sociales y Privados',
+      image: '/service_eventos.png',
       shortDesc: 'Coordinación logística de protección, control de aforos y filtrado con arcos y raquetas detectoras de metales.',
       fullDesc: 'Brindamos seguridad especializada para eventos corporativos, bodas, masivos y conferencias con detectores de metal Garrett y personal altamente cortés entrenado en manejo de aforos.',
       bullets: ['Detectores Garrett', 'Logística de Accesos', 'Atención Profesional y Cortés']
@@ -34,6 +37,7 @@ export default function ServicesCorp({ onSelectService }) {
       id: 'traslados',
       icon: Car,
       title: 'Protección Ejecutiva y Escoltas',
+      image: '/service_traslados.png',
       shortDesc: 'Conductores de seguridad altamente calificados y escoltas VIP para directivos y traslados de alta prioridad.',
       fullDesc: 'Conductores entrenados en evasión y manejo defensivo con opción a vehículos blindados. Absoluta discreción y profesionalismo para resguardo ejecutivo.',
       bullets: ['Conductores Certificados', 'Custodia de Valores', 'Discreción Absoluta']
@@ -42,6 +46,7 @@ export default function ServicesCorp({ onSelectService }) {
       id: 'monitoreo',
       icon: Monitor,
       title: 'Vigilancia CCTV y Alarmas',
+      image: '/service_monitoreo.png',
       shortDesc: 'Enlace directo de cámaras y alarmas habitacionales o comerciales con nuestra central operativa continua.',
       fullDesc: 'Supervisión automatizada con respuesta rápida. Al activarse un sensor o detectarse anomalía, coordinamos inmediatamente el despacho policial en CDMX/Edomex.',
       bullets: ['Monitoreo Continuo 24/7', 'Enlace de Emergencia', 'Analíticos de Movimiento']
@@ -50,6 +55,7 @@ export default function ServicesCorp({ onSelectService }) {
       id: 'investigacion',
       icon: Search,
       title: 'Consultoría y Análisis de Riesgo',
+      image: '/service_consultoria.png',
       shortDesc: 'Auditorías de vulnerabilidades, estudios socioeconómicos de candidatos y exámenes toxicológicos.',
       fullDesc: 'Protege tu contratación. Ofrecemos validación completa de antecedentes, pruebas de antidoping de 5 páneles y análisis físico para mitigar riesgos internos.',
       bullets: ['Estudios Socioeconómicos', 'Antidoping 5 Páneles', 'Auditoría Situacional']
@@ -78,25 +84,31 @@ export default function ServicesCorp({ onSelectService }) {
                 className={`service-card-corp reveal-on-scroll ${delayClass}`}
                 onClick={() => setSelectedService(s)}
               >
-                <div className="icon-box-corp">
-                  <Icon size={24} className="text-red-corp" />
+                {/* Real-life cover image for each service card */}
+                <div className="service-card-cover-image">
+                  <img src={s.image} alt={s.title} className="service-card-img" />
+                  <div className="service-card-icon-badge">
+                    <Icon size={16} className="text-red-corp" />
+                  </div>
                 </div>
 
-                <h3 className="card-title-corp">{s.title}</h3>
-                <p className="card-desc-corp">{s.shortDesc}</p>
+                <div className="service-card-content-wrap">
+                  <h3 className="card-title-corp">{s.title}</h3>
+                  <p className="card-desc-corp">{s.shortDesc}</p>
 
-                <ul className="bullets-corp-list">
-                  {s.bullets.map((b, i) => (
-                    <li key={i}>
-                      <Check size={14} className="text-emerald" />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
+                  <ul className="bullets-corp-list">
+                    {s.bullets.map((b, i) => (
+                      <li key={i}>
+                        <Check size={14} className="text-emerald" />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-                <div className="card-footer-corp">
-                  <span>Saber más</span>
-                  <ChevronRight size={14} />
+                  <div className="card-footer-corp">
+                    <span>Saber más</span>
+                    <ChevronRight size={14} />
+                  </div>
                 </div>
               </div>
             );
@@ -113,30 +125,37 @@ export default function ServicesCorp({ onSelectService }) {
               <X size={20} />
             </button>
 
-            <h3 className="modal-corp-title">{selectedService.title}</h3>
-            <p className="modal-corp-desc">{selectedService.fullDesc}</p>
+            {/* Modal Premium Top Image */}
+            <div className="modal-corp-image-wrap">
+              <img src={selectedService.image} alt={selectedService.title} className="modal-corp-img" />
+            </div>
 
-            <h4 className="modal-corp-subtitle">Características Destacadas:</h4>
-            <ul className="modal-corp-features">
-              {selectedService.bullets.map((b, i) => (
-                <li key={i}>
-                  <Check size={16} className="text-red-corp" />
-                  <span>{b}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="modal-corp-body-padding">
+              <h3 className="modal-corp-title">{selectedService.title}</h3>
+              <p className="modal-corp-desc">{selectedService.fullDesc}</p>
 
-            <button 
-              className="btn-primary-corp w-full"
-              style={{ marginTop: '24px', padding: '12px' }}
-              onClick={() => {
-                const s = selectedService;
-                setSelectedService(null);
-                onSelectService(s);
-              }}
-            >
-              Cotizar este Servicio Ahora
-            </button>
+              <h4 className="modal-corp-subtitle">Características Destacadas:</h4>
+              <ul className="modal-corp-features">
+                {selectedService.bullets.map((b, i) => (
+                  <li key={i}>
+                    <Check size={16} className="text-red-corp" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <button 
+                className="btn-primary-corp w-full"
+                style={{ marginTop: '24px', padding: '12px' }}
+                onClick={() => {
+                  const s = selectedService;
+                  setSelectedService(null);
+                  onSelectService(s);
+                }}
+              >
+                Cotizar este Servicio Ahora
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -1,0 +1,106 @@
+/* Full Screen Cyber Explosion Overlay */
+.cyber-explosion-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(6, 9, 19, 0.88);
+  backdrop-filter: blur(14px);
+  pointer-events: all;
+  overflow: hidden;
+}
+
+.explosion-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Center Terminal Glitch Box */
+.center-glitch-terminal {
+  position: relative;
+  z-index: 10;
+  max-width: 580px;
+  width: 90%;
+  padding: 28px 32px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  background: rgba(11, 19, 43, 0.95);
+  box-shadow: 0 0 50px rgba(16, 185, 129, 0.3), 0 20px 60px rgba(0, 0, 0, 0.9);
+  text-align: center;
+  animation: terminalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes terminalPop {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: #10B981;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+}
+
+.terminal-body {
+  padding: 18px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: var(--radius-sm);
+  margin-bottom: 18px;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glitch-text-display {
+  font-family: var(--font-heading), monospace;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #10B981;
+  text-shadow: 0 0 12px rgba(16, 185, 129, 0.8), 0 0 20px rgba(56, 189, 248, 0.5);
+  letter-spacing: 1px;
+  word-break: break-all;
+}
+
+.terminal-footer {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.decrypt-progress-bar {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #10B981 0%, #38BDF8 50%, #FF3B4E 100%);
+  animation: progressFill 1s linear forwards;
+}
+
+@keyframes progressFill {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0%); }
+}
+
+@media (max-width: 640px) {
+  .center-glitch-terminal {
+    padding: 20px;
+  }
+  .glitch-text-display {
+    font-size: 0.95rem;
+  }
+}

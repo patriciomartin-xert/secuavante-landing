@@ -8,19 +8,26 @@ import SelectionProcess from './components/SelectionProcess';
 import TrustBadges from './components/TrustBadges';
 import QuoteCalculator from './components/QuoteCalculator';
 import ContactFooter from './components/ContactFooter';
+import CyberExplosionOverlay from './components/CyberExplosionOverlay';
+import QuoteModal from './components/QuoteModal';
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
+  const [isExploding, setIsExploding] = useState(false);
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [selectedServiceForQuote, setSelectedServiceForQuote] = useState(null);
 
-  const scrollToQuote = (service = null) => {
+  const handleTriggerQuote = (service = null) => {
     if (service) {
       setSelectedServiceForQuote(service);
     }
-    const quoteElement = document.getElementById('cotizador');
-    if (quoteElement) {
-      quoteElement.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Launch Glitch, Unscramble and Cyber Particle Explosion Effect
+    setIsExploding(true);
+  };
+
+  const handleExplosionComplete = () => {
+    setIsExploding(false);
+    setIsQuoteModalOpen(true);
   };
 
   return (
@@ -28,21 +35,37 @@ export default function App() {
       {/* Interactive Encrypted Cyber Stream Background */}
       <CyberBackground />
 
+      {/* Cyber Code Glitch & Matrix Explosion Overlay */}
+      <CyberExplosionOverlay 
+        isActive={isExploding} 
+        onComplete={handleExplosionComplete} 
+      />
+
+      {/* Pop-Up Quote Modal */}
+      <QuoteModal 
+        isOpen={isQuoteModalOpen} 
+        onClose={() => setIsQuoteModalOpen(false)} 
+        selectedService={selectedServiceForQuote}
+      />
+
       {/* Intro Cyber Lock Animation */}
       {showIntro && (
         <LockIntro onComplete={() => setShowIntro(false)} />
       )}
 
       {/* Main Landing App */}
-      <Navbar onOpenQuote={() => scrollToQuote()} />
+      <Navbar onOpenQuote={() => handleTriggerQuote()} />
       <main>
-        <Hero onOpenQuote={() => scrollToQuote()} />
-        <Services onSelectService={(service) => scrollToQuote(service)} />
+        <Hero onOpenQuote={() => handleTriggerQuote()} />
+        <Services onSelectService={(service) => handleTriggerQuote(service)} />
         <SelectionProcess />
         <TrustBadges />
-        <QuoteCalculator preselectedService={selectedServiceForQuote} />
+        <QuoteCalculator 
+          preselectedService={selectedServiceForQuote} 
+          onOpenQuote={() => handleTriggerQuote()}
+        />
       </main>
-      <ContactFooter />
+      <ContactFooter onOpenQuote={() => handleTriggerQuote()} />
     </div>
   );
 }

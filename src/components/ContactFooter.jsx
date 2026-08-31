@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin, Send, Shield, CheckCircle, Clock, ExternalLink } f
 import SecuavanteLogo from './SecuavanteLogo';
 import './ContactFooter.css';
 
-export default function ContactFooter() {
+export default function ContactFooter({ onOpenQuote }) {
   const [formSent, setFormSent] = useState(false);
   const [formData, setFormData] = useState({
     nombre: '',

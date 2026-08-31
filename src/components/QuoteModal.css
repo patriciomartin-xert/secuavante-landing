@@ -1,0 +1,215 @@
+/* Quote Registration Modal Styling */
+.quote-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+  background: rgba(4, 6, 14, 0.88);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.quote-modal-content {
+  position: relative;
+  max-width: 680px;
+  width: 100%;
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 36px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(230, 57, 70, 0.45);
+  background: rgba(11, 15, 25, 0.96);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.85), 0 0 45px rgba(230, 57, 70, 0.25);
+  animation: modalScaleUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalScaleUp {
+  0% { transform: scale(0.9) translateY(20px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.quote-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: #94A3B8;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quote-modal-close:hover {
+  background: rgba(230, 57, 70, 0.3);
+  color: #FFFFFF;
+}
+
+.quote-modal-header {
+  margin-bottom: 24px;
+}
+
+.modal-badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  font-size: 0.725rem;
+  font-weight: 700;
+  color: #34D399;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.quote-modal-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}
+
+.quote-modal-sub {
+  font-size: 0.9rem;
+  color: #94A3B8;
+  line-height: 1.5;
+}
+
+/* Form Grid */
+.quote-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #CBD5E1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: var(--radius-sm);
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #E63946;
+  outline: none;
+  box-shadow: 0 0 12px rgba(230, 57, 70, 0.3);
+  background: rgba(20, 29, 52, 0.9);
+}
+
+.form-group select option {
+  background: #0B0F19;
+  color: #FFFFFF;
+}
+
+.submit-quote-btn {
+  margin-top: 10px;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Success State */
+.quote-success-state {
+  text-align: center;
+  padding: 24px 12px;
+}
+
+.success-icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.15);
+  border: 2px solid rgba(16, 185, 129, 0.4);
+  margin-bottom: 20px;
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+}
+
+.quote-success-state h3 {
+  font-size: 1.5rem;
+  color: #FFFFFF;
+  margin-bottom: 12px;
+}
+
+.quote-success-state p {
+  font-size: 0.95rem;
+  color: #CBD5E1;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.btn-whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #FFFFFF;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+  transition: all 0.25s ease;
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+}
+
+@media (max-width: 640px) {
+  .quote-modal-content {
+    padding: 24px 20px;
+  }
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+  .quote-modal-title {
+    font-size: 1.3rem;
+  }
+}

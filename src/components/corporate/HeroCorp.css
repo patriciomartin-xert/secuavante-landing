@@ -222,18 +222,38 @@
 
 @media (max-width: 640px) {
   .hero-corp-section {
-    padding-top: 110px;
-    padding-bottom: 32px;
+    padding-top: 92px; /* Tighter layout to pull content up */
+    padding-bottom: 24px;
+  }
+  .hero-corp-container {
+    gap: 16px !important; /* Move guard image much closer to the call-to-action */
   }
   .hero-corp-title {
-    font-size: 2.1rem;
+    font-size: 1.8rem; /* Extremely professional, doesn't wrap unnecessarily */
     line-height: 1.25;
+    margin-bottom: 14px;
   }
   .hero-corp-desc {
     display: none; /* Hide long filler text for clean mobile view */
   }
+  .hero-trust-bullets-corp {
+    display: none !important; /* Hide long bullets to bring the officer's picture above the fold */
+  }
+  .btn-secondary-corp-large {
+    display: none !important; /* Only show ONE single clear call to action on mobile, header already has direct quote */
+  }
+  .hero-actions-corp {
+    margin-bottom: 16px;
+    width: 100%;
+  }
+  .btn-primary-corp-large {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    text-align: center;
+  }
   .friendly-guard-img {
-    height: 240px !important;
+    height: 220px !important; /* Perfect height to fit without crowding */
   }
   .badge-top-left {
     display: none !important; /* Hide top-left badge on mobile so it never covers the guard's face */
@@ -251,16 +271,5 @@
   }
   .badge-sub {
     font-size: 0.6rem !important;
-  }
-  .hero-actions-corp {
-    margin-bottom: 24px;
-    gap: 12px;
-  }
-  .btn-primary-corp-large,
-  .btn-secondary-corp-large {
-    width: 100%;
-    padding: 12px 20px;
-    font-size: 0.9rem;
-    text-align: center;
   }
 }

@@ -173,9 +173,15 @@ export default function Services({ onSelectService }) {
               Eventos & Protección VIP
             </button>
           </div>
+          {/* Mobile Swipe Hint */}
+          <div className="mobile-swipe-hint">
+            <ChevronRight size={14} className="swipe-arrow left" />
+            <span>Desliza lateralmente para explorar los servicios</span>
+            <ChevronRight size={14} className="swipe-arrow right" />
+          </div>
         </div>
 
-        {/* Services Grid - Entire card is clickable */}
+        {/* Services Grid - Horizontal swipe on mobile, 3-col grid on desktop */}
         <div className="services-grid">
           {filteredServices.map((service) => {
             const IconComponent = service.icon;

@@ -29,14 +29,25 @@ export default function CyberBackground() {
     };
 
     const handleClick = (e) => {
-      // Trigger a security shockwave on click anywhere on background
+      triggerPulse(e.clientX, e.clientY);
+    };
+
+    const handleTouch = (e) => {
+      if (e.touches && e.touches[0]) {
+        mouse.x = e.touches[0].clientX;
+        mouse.y = e.touches[0].clientY;
+        triggerPulse(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    };
+
+    const triggerPulse = (cx, cy) => {
       shockwaves.push({
-        x: e.clientX,
-        y: e.clientY,
+        x: cx,
+        y: cy,
         radius: 10,
-        maxRadius: Math.max(width, height) * 0.6,
+        maxRadius: Math.max(width, height) * 0.5,
         opacity: 0.9,
-        lineWidth: 3,
+        lineWidth: 2.5,
         label: 'ALERTA DE SEGURIDAD • EMP PULSE ACTIVADO'
       });
     };
@@ -49,6 +60,7 @@ export default function CyberBackground() {
 
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('click', handleClick);
+    window.addEventListener('touchstart', handleTouch, { passive: true });
     window.addEventListener('resize', handleResize);
 
     // Cyber characters pool
@@ -202,6 +214,7 @@ export default function CyberBackground() {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('click', handleClick);
+      window.removeEventListener('touchstart', handleTouch);
       window.removeEventListener('resize', handleResize);
     };
   }, []);

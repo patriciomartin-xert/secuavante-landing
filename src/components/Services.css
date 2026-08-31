@@ -379,10 +379,77 @@
   margin-top: 12px;
 }
 
-@media (max-width: 640px) {
-  .services-grid {
-    grid-template-columns: 1fr;
+/* Mobile Swipe Hint Indicator */
+.mobile-swipe-hint {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-swipe-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+    font-size: 0.775rem;
+    font-weight: 700;
+    color: var(--cyan-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
   }
+
+  .swipe-arrow {
+    animation: swipePulse 1.5s infinite alternate ease-in-out;
+  }
+  .swipe-arrow.left {
+    transform: rotate(180deg);
+  }
+
+  @keyframes swipePulse {
+    0% { opacity: 0.4; transform: translateX(-3deg); }
+    100% { opacity: 1; transform: translateX(3deg); }
+  }
+
+  /* Horizontal Snap Slider on Mobile */
+  .services-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    margin-top: 24px;
+    padding: 8px 4px 24px 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .services-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .service-card.clickable-card {
+    min-width: 84vw;
+    max-width: 86vw;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+    padding: 22px;
+  }
+
+  /* Clean up inner clutter on mobile cards */
+  .service-features-list {
+    display: none;
+  }
+
+  .service-short {
+    font-size: 0.85rem;
+    margin-bottom: 14px;
+  }
+}
+
+@media (max-width: 640px) {
   .equipment-grid-modal {
     grid-template-columns: 1fr;
   }

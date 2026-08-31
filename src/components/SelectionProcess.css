@@ -180,3 +180,45 @@
     align-items: flex-start;
   }
 }
+
+@media (max-width: 768px) {
+  .steps-nav-list {
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 10px;
+    padding: 4px 2px 14px 2px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .steps-nav-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .step-nav-card {
+    flex-shrink: 0;
+    min-width: 165px;
+    max-width: 200px;
+    scroll-snap-align: start;
+    padding: 12px 14px;
+  }
+
+  .step-detail-card {
+    padding: 22px;
+  }
+
+  .step-detail-title {
+    font-size: 1.35rem;
+  }
+
+  .step-detail-desc {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .quality-values-banner {
+    padding: 22px;
+    gap: 18px;
+  }
+}

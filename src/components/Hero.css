@@ -259,3 +259,28 @@
     justify-content: center;
   }
 }
+
+@media (max-width: 640px) {
+  .hero-section {
+    padding-top: 100px;
+    padding-bottom: 48px;
+  }
+  .hero-title {
+    font-size: 2.1rem;
+    line-height: 1.2;
+  }
+  .hero-description {
+    font-size: 0.95rem;
+  }
+  .hero-permits-card {
+    padding: 14px;
+    gap: 10px;
+  }
+  .hero-card-preview {
+    padding: 20px;
+  }
+  .radar-display {
+    width: 170px;
+    height: 170px;
+  }
+}

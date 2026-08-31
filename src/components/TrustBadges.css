@@ -1,0 +1,123 @@
+.trust-section {
+  position: relative;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 48px;
+}
+
+.trust-badge-card {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.trust-badge-card.highlight-card {
+  border-color: var(--border-active);
+  background: rgba(230, 57, 70, 0.08);
+  box-shadow: var(--shadow-glow-red);
+}
+
+.trust-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.trust-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trust-icon-box.red {
+  background: rgba(230, 57, 70, 0.15);
+  border-color: var(--primary-red);
+}
+
+.trust-badge-title {
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+
+.trust-badge-code {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--cyan-accent);
+  margin-bottom: 16px;
+}
+
+.trust-badge-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.trust-check-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.775rem;
+  font-weight: 700;
+  color: #10B981;
+}
+
+/* Quality Policy Card */
+.quality-policy-card {
+  padding: 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  border: 1px solid var(--border-subtle);
+}
+
+.policy-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-md);
+  background: rgba(230, 57, 70, 0.12);
+  border: 1px solid rgba(230, 57, 70, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.policy-title {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.policy-quote {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.policy-quote strong {
+  color: #FFFFFF;
+}
+
+@media (max-width: 1024px) {
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+  .quality-policy-card {
+    flex-direction: column;
+  }
+}

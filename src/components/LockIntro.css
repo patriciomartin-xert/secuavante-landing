@@ -1,0 +1,208 @@
+/* Lock Intro Styles */
+.lock-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: #060913;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s ease;
+}
+
+.lock-fadeout {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.08);
+}
+
+.lock-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+}
+
+.lock-glow-orb {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(230, 57, 70, 0.25) 0%, rgba(11, 19, 43, 0) 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.lock-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 460px;
+  padding: 40px 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgba(230, 57, 70, 0.3);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(230, 57, 70, 0.2);
+}
+
+.lock-badge-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(230, 57, 70, 0.12);
+  border: 1px solid rgba(230, 57, 70, 0.3);
+  border-radius: 9999px;
+  color: #E63946;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+}
+
+.lock-pulse-icon {
+  animation: pulseGlow 1.5s infinite;
+}
+
+.lock-visual-container {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.lock-ring-outer {
+  position: absolute;
+  inset: 0;
+  border: 2px dashed rgba(230, 57, 70, 0.4);
+  border-radius: 50%;
+}
+
+.lock-ring-inner {
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+}
+
+.lock-laser-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #E63946, #38BDF8, #E63946, transparent);
+  box-shadow: 0 0 12px #E63946;
+  animation: scanBeam 2s ease-in-out infinite;
+  z-index: 3;
+}
+
+.lock-icon-wrapper {
+  z-index: 2;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.lock-svg-icon.locked {
+  color: #E63946;
+  filter: drop-shadow(0 0 12px rgba(230, 57, 70, 0.8));
+}
+
+.lock-svg-icon.unlocked {
+  color: #10B981;
+  filter: drop-shadow(0 0 16px rgba(16, 185, 129, 0.9));
+  transform: scale(1.1);
+}
+
+.lock-brand-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.text-red {
+  color: #E63946;
+}
+
+.lock-brand-sub {
+  font-size: 0.85rem;
+  color: #94A3B8;
+  margin-bottom: 24px;
+}
+
+.lock-progress-wrapper {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.lock-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #E63946, #38BDF8);
+  box-shadow: 0 0 10px #E63946;
+  transition: width 0.1s linear;
+}
+
+.lock-status-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.8rem;
+  color: #CBD5E1;
+  margin-bottom: 24px;
+}
+
+.lock-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #E63946;
+  box-shadow: 0 0 8px #E63946;
+  animation: pulseGlow 1s infinite;
+}
+
+.text-emerald {
+  color: #10B981;
+}
+
+.lock-skip-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: #64748B;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.lock-skip-btn:hover {
+  color: #F8FAFC;
+  background: rgba(255, 255, 255, 0.05);
+}

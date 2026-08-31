@@ -1,5 +1,23 @@
 import React, { useState } from 'react';
-import { Building2, Navigation, Car, Monitor, Calendar, Search, ShieldCheck, ChevronRight, X, ArrowUpRight, Radio, Cpu, Lock } from 'lucide-react';
+import { 
+  Building2, 
+  Navigation, 
+  Car, 
+  Monitor, 
+  Search, 
+  ShieldCheck, 
+  X, 
+  ChevronRight, 
+  Cpu, 
+  Sparkles, 
+  Radio, 
+  ShieldAlert, 
+  Crown, 
+  Activity, 
+  FileSearch, 
+  ArrowUpRight,
+  Shield
+} from 'lucide-react';
 import './Services.css';
 
 export default function Services({ onSelectService }) {
@@ -22,7 +40,7 @@ export default function Services({ onSelectService }) {
         'Respuesta inmediata con unidades de supervisión en campo',
         'Alineación total con normativas STPS y SSC CDMX'
       ],
-      badge: 'Servicio Principal'
+      badge: { label: 'Servicio Principal', type: 'main', icon: Sparkles }
     },
     {
       id: 'gps',
@@ -39,12 +57,12 @@ export default function Services({ onSelectService }) {
         'Reporte de velocidades, paradas y rendimiento de combustible',
         'Botón de pánico inalámbrico para el conductor'
       ],
-      badge: 'Tecnología GPS'
+      badge: { label: 'Tecnología GPS', type: 'tech', icon: Radio }
     },
     {
       id: 'eventos',
       category: 'vip',
-      icon: Calendar,
+      icon: ShieldAlert,
       title: 'Eventos Sociales, Deportivos, Públicos o Privados',
       shortDesc: 'Logística de protección, control de aforos masivos e inspección de seguridad con detectores de metal GARRETT.',
       fullDesc: 'Diseñamos e implementamos planes de seguridad para conciertos, exposiciones, convenciones corporativas, partidos deportivos y fiestas privadas exclusivas. Contamos con detectores de metal portátiles tipo raqueta marca GARRETT para un filtrado ágil y seguro de los asistentes.',
@@ -56,7 +74,7 @@ export default function Services({ onSelectService }) {
         'Coordinación con autoridades locales y Protección Civil',
         'Personal de reacción rápida capacitado en primeros auxilios'
       ],
-      badge: 'Equipos GARRETT'
+      badge: { label: 'Equipos GARRETT', type: 'equipment', icon: Shield }
     },
     {
       id: 'traslados',
@@ -73,7 +91,7 @@ export default function Services({ onSelectService }) {
         'Atención a visitantes internacionales y directivos VIP',
         'Unidades blindadas nivel III y V previa solicitud'
       ],
-      badge: 'Custodia Elite'
+      badge: { label: 'Custodia Elite', type: 'vip', icon: Crown }
     },
     {
       id: 'monitoreo',
@@ -90,7 +108,7 @@ export default function Services({ onSelectService }) {
         'Activación inmediata de protocolos con la policía de CDMX / Edomex',
         'Reportes periódicos de novedades e incidencias'
       ],
-      badge: 'Centro de Comando'
+      badge: { label: 'Centro de Comando', type: 'command', icon: Activity }
     },
     {
       id: 'investigacion',
@@ -107,7 +125,7 @@ export default function Services({ onSelectService }) {
         'Asesoría técnica para cumplimiento normativo REPSE y STPS',
         'Absoluta secrecía y discreción profesional'
       ],
-      badge: 'Investigación'
+      badge: { label: 'Investigación', type: 'audit', icon: FileSearch }
     }
   ];
 
@@ -125,7 +143,7 @@ export default function Services({ onSelectService }) {
             Catálogo Completo de <span className="gradient-red">Servicios de Seguridad</span>
           </h2>
           <p className="text-muted">
-            Soluciones profesionales enfocadas en la prevención y gestión efectiva de riesgos, adaptadas rigurosamente a tus requerimientos.
+            Haz clic en cualquiera de nuestras tarjetas para consultar el equipamiento completo y especificaciones técnicas.
           </p>
 
           {/* Filter Categories */}
@@ -157,23 +175,45 @@ export default function Services({ onSelectService }) {
           </div>
         </div>
 
-        {/* Services Grid */}
+        {/* Services Grid - Entire card is clickable */}
         <div className="services-grid">
           {filteredServices.map((service) => {
             const IconComponent = service.icon;
+            const BadgeIcon = service.badge.icon;
+
             return (
-              <div key={service.id} className="glass-card service-card">
+              <div 
+                key={service.id} 
+                className="glass-card service-card clickable-card"
+                onClick={() => setSelectedModal(service)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    setSelectedModal(service);
+                  }
+                }}
+              >
+                {/* Card Top: Icon & High-Tech Badge Tag */}
                 <div className="service-card-top">
-                  <div className="service-icon-box">
-                    <IconComponent size={26} className="text-red" />
+                  <div className="service-icon-box glow-icon">
+                    <IconComponent size={26} className="service-icon-svg" />
                   </div>
-                  <span className="badge-tag-cyan">{service.badge}</span>
+
+                  <span className={`tech-badge-tag badge-${service.badge.type}`}>
+                    <BadgeIcon size={12} className="badge-icon-svg" />
+                    <span>{service.badge.label}</span>
+                  </span>
                 </div>
 
-                <h3 className="service-title">{service.title}</h3>
+                {/* Title & Short Description */}
+                <h3 className="service-title">
+                  {service.title}
+                  <ArrowUpRight size={18} className="card-hover-arrow" />
+                </h3>
                 <p className="service-short">{service.shortDesc}</p>
 
-                {/* Equipment Badges */}
+                {/* Equipment Pills List */}
                 <div className="equipment-pills-list">
                   {service.equipment.slice(0, 3).map((eq, i) => (
                     <span key={i} className="equipment-pill">
@@ -183,6 +223,7 @@ export default function Services({ onSelectService }) {
                   ))}
                 </div>
 
+                {/* Main Feature Highlights */}
                 <div className="service-features-list">
                   {service.features.slice(0, 2).map((feat, idx) => (
                     <div key={idx} className="feature-mini-item">
@@ -192,14 +233,9 @@ export default function Services({ onSelectService }) {
                   ))}
                 </div>
 
-                <div className="service-card-footer">
-                  <button 
-                    className="service-more-btn"
-                    onClick={() => setSelectedModal(service)}
-                  >
-                    <span>Ver Detalles y Equipamiento</span>
-                    <ArrowUpRight size={16} />
-                  </button>
+                <div className="card-click-prompt">
+                  <span>Haz clic para ver equipamiento y especificaciones</span>
+                  <ChevronRight size={14} />
                 </div>
               </div>
             );
@@ -217,11 +253,14 @@ export default function Services({ onSelectService }) {
             </button>
 
             <div className="modal-header">
-              <div className="service-icon-box large">
-                <selectedModal.icon size={32} className="text-red" />
+              <div className="service-icon-box large glow-icon">
+                <selectedModal.icon size={30} className="service-icon-svg" />
               </div>
               <div>
-                <span className="badge-tag">{selectedModal.badge}</span>
+                <span className={`tech-badge-tag badge-${selectedModal.badge.type}`}>
+                  {React.createElement(selectedModal.badge.icon, { size: 12, className: 'badge-icon-svg' })}
+                  <span>{selectedModal.badge.label}</span>
+                </span>
                 <h3 className="modal-title">{selectedModal.title}</h3>
               </div>
             </div>
